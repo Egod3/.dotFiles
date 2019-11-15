@@ -1,10 +1,16 @@
 get_dot_files(){
+    if [ ! -d .dotFiles ]; then
+        echo git clone https://github.com/Egod3/.dotFiles.git .dotFiles
+        git clone https://github.com/Egod3/.dotFiles.git .dotFiles
+    fi
+
     dot_files=('.bashrc' '.bash_aliases' '.git-prompt.sh')
-    echo git clone https://github.com/Egod3/.dotFiles.git .dotFiles
-    # add the above line in as a real command.
     for i in "${dot_files[@]}"
     do
-        [ ! -f $i ] && echo ln -s .dotFiles/$i . && ln -s .dotFiles/$i .
+        if [ ! -f $i ]; then
+            echo ln -s .dotFiles/$i . 
+            ln -s .dotFiles/$i .
+        fi
     done
 }
 
