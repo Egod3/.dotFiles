@@ -1,0 +1,13 @@
+get_dot_files(){
+    dot_files=('.bashrc' '.bash_aliases' '.git-prompt.sh')
+    echo git clone https://github.com/Egod3/.dotFiles.git .dotFiles
+    # add the above line in as a real command.
+    for i in "${dot_files[@]}"
+    do
+        [ ! -f $i ] && echo ln -s .dotFiles/$i . && ln -s .dotFiles/$i .
+    done
+}
+
+pushd ~/
+get_dot_files
+popd

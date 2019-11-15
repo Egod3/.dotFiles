@@ -29,4 +29,4 @@ alias ll='ls -alFh'
 alias la='ls -A'
 alias l='ls -CFh'
 alias psg='ps aux | grep'
-
+alias gl='git log --all --decorate --oneline --graph'
