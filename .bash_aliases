@@ -1,6 +1,6 @@
-################################################
-####                FUNCTIONS              #####
-################################################
+###############################################
+####               FUNCTIONS               ####
+###############################################
 ps_n(){
     echo ps -t pts/$1 -o pid,ppid,tty,stat,args,wchan
     ps -t pts/$1 -o pid,ppid,tty,stat,args,wchan
@@ -13,9 +13,9 @@ deb_update(){
     sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y && sudo do-release-upgrade -c
 }
 
-################################################
-####                 ALIASES               #####
-################################################
+###############################################
+####                ALIASES                ####
+###############################################
 alias update='deb_update'
 
 alias psn='ps_n'
@@ -30,3 +30,4 @@ alias la='ls -A'
 alias l='ls -CFh'
 alias psg='ps aux | grep'
 alias gl='git log --all --decorate --oneline --graph'
+alias f='find -iname '
