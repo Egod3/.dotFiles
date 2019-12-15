@@ -1,2 +1,2 @@
 # .dotFiles
-A collection of linux confirugation files.
+A collection of linux configuration files.

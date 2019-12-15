@@ -4,12 +4,12 @@ get_dot_files(){
         git clone https://github.com/Egod3/.dotFiles.git .dotFiles
     fi
 
-    dot_files=('.bashrc' '.bash_aliases' '.git-prompt.sh')
+    dot_files=('.bashrc' '.bash_aliases' '.git-prompt.sh' '.config/nvim/init.vim' '.config/nvim/cscope_maps.vim')
     for i in "${dot_files[@]}"
     do
         if [ ! -f $i ]; then
-            echo ln -s .dotFiles/$i . 
-            ln -s .dotFiles/$i .
+            echo ln -s ~/.dotFiles/$i $i
+            ln -s ~/.dotFiles/$i $i
         fi
     done
 }
