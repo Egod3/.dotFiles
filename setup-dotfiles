@@ -1,8 +1,6 @@
 get_dot_files(){
-    if [ ! -d .dotFiles ]; then
-        echo git clone https://github.com/Egod3/.dotFiles.git .dotFiles
-        git clone https://github.com/Egod3/.dotFiles.git .dotFiles
-    fi
+    # An example of how to download this repo...
+    #echo git clone https://github.com/Egod3/.dotFiles.git .dotFiles
 
     dot_files=('.bashrc' '.bash_aliases' '.git-prompt.sh' '.config/nvim/init.vim' '.config/nvim/cscope_maps.vim' '.tmux.conf')
     for i in "${dot_files[@]}"
