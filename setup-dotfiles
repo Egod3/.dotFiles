@@ -1,17 +1,29 @@
+# Pre-requesite programs:
+# git, curl, nvim, bash
 get_dot_files(){
     # An example of how to download this repo...
     #echo git clone https://github.com/Egod3/.dotFiles.git .dotFiles
+
+    if [ ! -f ~/.local/share/nvim/site/autoload/plug.vim ]; then
+      echo "curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+    fi
 
     dot_files=('.bashrc' '.bash_aliases' '.git-prompt.sh' '.config/nvim/init.vim' '.config/nvim/cscope_maps.vim' '.tmux.conf')
     for i in "${dot_files[@]}"
     do
         if [ ! -f $i ]; then
-            echo ln -s ~/.dotFiles/$i $i
+            echo "1: ln -s ~/.dotFiles/$i $i"
             ln -s ~/.dotFiles/$i ~/$i
-        fi
-        if [ $i == ".config/nvim/init.vim" ]; then
-          echo ln -s ~/.dotFiles/$i ~/.config/nvim/init.vim
-          ln -s ~/.dotFiles/$i ~/.config/nvim/init.vim
+        elif [ $i == ".config/nvim/init.vim" ]; then
+          if [ ! -f $i ]; then
+            echo "2: ln -s ~/.dotFiles/$i ~/.config/nvim/init.vim"
+            ln -s ~/.dotFiles/$i ~/.config/nvim/init.vim
+          fi
+        elif [ $i == ".config/nvim/cscope_maps.vim" ]; then
+          if [ ! -f $i ]; then
+            echo "3: ln -s ~/.dotFiles/$i ~/.config/nvim/cscope_maps.vim"
+            ln -s ~/.dotFiles/$i ~/.config/nvim/cscope_maps.vim
+          fi
         fi
     done
 }
