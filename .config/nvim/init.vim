@@ -16,10 +16,10 @@ endfunction
 
 nmap <silent>  <C-B>  :call UpdateCscope()<CR>
 
-autocmd Filetype c setlocal tabstop=4
-autocmd Filetype h setlocal tabstop=4
-autocmd Filetype cpp setlocal tabstop=4
-autocmd Filetype cs setlocal tabstop=4
+autocmd Filetype c setlocal tabstop=2
+autocmd Filetype h setlocal tabstop=2
+autocmd Filetype cpp setlocal tabstop=2
+autocmd Filetype cs setlocal tabstop=2
 
 " Shortcuts to make fugitive.vim (git in vim) easier to use
 nnoremap <space>ga :Git add %:p<CR><CR>
@@ -94,6 +94,7 @@ Plug 'preservim/nerdcommenter'
 Plug 'vim-scripts/TagHighlight'
 Plug 'morhetz/gruvbox'
 Plug 'joshdick/onedark.vim'
+Plug 'rust-lang/rust.vim'
 
 call plug#end()
 

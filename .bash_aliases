@@ -11,12 +11,12 @@ deb_update(){
     echo "sudo apt update"
     echo "sudo apt upgrade -y"
     echo "sudo apt autoremove -y"
-    echo "sudo do-release-upgrade -c"
+    echo "sudo update-manager"
     echo
     sudo apt update
     sudo apt upgrade -y
     sudo apt autoremove -y
-    sudo do-release-upgrade -c
+    sudo update-manager
 }
 
 rdesktop_work(){
@@ -58,6 +58,8 @@ alias l='ls -CFh'
 alias psg='ps aux | grep'
 alias gl='git log --decorate --graph'
 alias glo='git log --decorate --graph --oneline'
+alias gb='git branch -va'
+alias gd='git diff'
 alias f='find -iname '
 
 alias fts='find /mnt/NAS/video/  -iname *.ts'
