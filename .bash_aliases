@@ -19,13 +19,6 @@ deb_update(){
     sudo update-manager
 }
 
-rdesktop_work(){
-  echo
-  echo "rdesktop -d na -u egodfrey -g 2000x1100 -x lan -P -k en-us -r sound:remote -a 16 localhost &"
-  echo
-  rdesktop -d na -u egodfrey -g 2000x1100 -x lan -P -k en-us -r sound:remote -a 16 localhost &
-}
-
 transcode(){
    echo "/mnt/NAS/data/git/scripts/transcode.py -i /mnt/NAS/video/tv\ shows/ -v -t"
    /mnt/NAS/data/git/scripts/transcode.py -i /mnt/NAS/video/tv\ shows/ -v -t
