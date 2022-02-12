@@ -36,6 +36,30 @@ check_rename(){
   /mnt/NAS/data/git/scripts/rename_media.py -i /mnt/NAS/video/ -v
 }
 
+# Function to build and test roll_for_initiative and any
+# libraries it uses
+build_rfi(){
+  rfi_path="/mnt/NAS/data/git/tools/roll_for_initiative"
+  character_path="/mnt/NAS/data/git/tools/character"
+  if [ $PWD=$rfi_path ]
+  then
+    echo "cd ../character/ && cargo build && cargo test -- --test-threads=2 $1\
+      && echo && echo && echo && cd ../roll_for_initiative/ && cargo build && cargo run"
+    cd ../character/ && cargo build && cargo test -- --test-threads=2 $1 && \
+      echo && echo && echo && cd ../roll_for_initiative/ && cargo build && cargo run
+  elif [ $PWD=$character_path ]
+  then
+    echo "cd ../roll_for_initiative/ && cargo build && cargo run && echo && echo && echo && \
+      cd ../character/ && cargo build && cargo test -- --test-threads=2 $1"
+    cd ../roll_for_initiative/ && cargo build && cargo run && echo && echo && echo && \
+      cd ../character/ && cargo build && cargo test -- --test-threads=2 $1
+  fi
+}
+
+build_rfi_dbg(){
+  build_rfi "--show-output"
+}
+
 ###############################################
 ####                ALIASES                ####
 ###############################################
@@ -57,3 +81,5 @@ alias f='find -iname '
 
 alias fts='find /mnt/NAS/video/  -iname *.ts'
 alias trans=transcode
+
+alias start_tmux='~/.dotFiles/start-tmux.sh'
