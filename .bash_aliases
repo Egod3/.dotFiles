@@ -83,3 +83,4 @@ alias fts='find /mnt/NAS/video/  -iname *.ts'
 alias trans=transcode
 
 alias start_tmux='~/.dotFiles/start-tmux.sh'
+alias vim='/usr/local/bin/nvim'
