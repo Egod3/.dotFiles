@@ -99,15 +99,15 @@ Plug 'neovim/nvim-lspconfig'
 
 call plug#end()
 
-" Every time we save a buffer run :RustFmt on it
-" This is a setting for 'rust-lang/rust.vim' plug in above
+" Upon saving a buffer run :RustFmt on it
+" This is a setting for 'rust-lang/rust.vim' plugin above
 let g:rustfmt_autosave = 1
 
 " Inititalize and setup the rust_analyzer server
+" This is a setting for 'neovim/nvim-lspconfig' plugin above
 lua require'lspconfig'.rust_analyzer.setup({})
 
 "syntax on
-"colorscheme onedark
 colorscheme gruvbox
 set background=dark " use dark mode
 
