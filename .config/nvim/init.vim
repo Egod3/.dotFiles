@@ -93,11 +93,12 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'preservim/nerdcommenter'
 Plug 'vim-scripts/TagHighlight'
-Plug 'morhetz/gruvbox'
 Plug 'joshdick/onedark.vim'
 Plug 'rust-lang/rust.vim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'airblade/vim-gitgutter'
+Plug 'tomasr/molokai'
+Plug 'jacoborus/tender.vim'
 
 call plug#end()
 
@@ -109,7 +110,10 @@ let g:rustfmt_autosave = 1
 " This is a setting for 'neovim/nvim-lspconfig' plugin above
 lua require'lspconfig'.rust_analyzer.setup({})
 
-"syntax on
-colorscheme gruvbox
-set background=dark " use dark mode
+syntax on
+colorscheme pablo
+" colorscheme slate
+" colorscheme elflord
+" colorscheme molokai
+" colorscheme tender
 
