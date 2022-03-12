@@ -90,12 +90,14 @@ Plug 'davidhalter/jedi-vim'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'preservim/nerdcommenter'
 Plug 'vim-scripts/TagHighlight'
 Plug 'morhetz/gruvbox'
 Plug 'joshdick/onedark.vim'
 Plug 'rust-lang/rust.vim'
 Plug 'neovim/nvim-lspconfig'
+Plug 'airblade/vim-gitgutter'
 
 call plug#end()
 

@@ -89,6 +89,11 @@ fi
 
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+# This was added when installing the tockloader, the boot loader used to load apps on the tock
+# Embedded rust OS.
+# Update path to add these packages to the PATH variable, installed as part of this command:
+#   pip3 install --upgrade tockloader --user # Installing collected packages: tqdm, pytoml, pyserial, crcmod, argcomplete, tockloader
+PATH="$PATH:/home/egodfrey/.local/bin"
 
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
@@ -104,4 +109,5 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+# Add ~/.cargo/bin to the beginning of the PATH variable
 source "$HOME/.cargo/env"
