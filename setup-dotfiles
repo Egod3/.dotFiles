@@ -1,34 +1,42 @@
 # Pre-requesite programs:
-# git, curl, neovim, bash
+#   git, curl, nvim, bash, python-dev, python3-dev python3-pip
+# Other useful apps:
+#   htop, tmux, rustup, cargo, nfs-common, pynvim, plug.vim (insalled when this script runs)
 get_dot_files(){
     # An example of how to download this repo...
     #echo git clone https://github.com/Egod3/.dotFiles.git .dotFiles
 
-    if [ ! -f ~/.local/share/nvim/site/autoload/plug.vim ]; then
-      echo "curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
-      curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    if [[ ! -f "$HOME/.local/share/nvim/site/autoload/plug.vim" ]]; then
+      echo "curl -fLo $HOME/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+      curl -fLo $HOME/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    fi
+
+    # Check if the nvim config path exists if it does not create it
+    NVIM_CONF_DIR="$HOME/.config/nvim"
+    if [[ ! -d "$NVIM_CONF_DIR" ]]; then
+        mkdir -v "$NVIM_CONF_DIR"
     fi
 
     dot_files=('.bashrc' '.bash_aliases' '.git-prompt.sh' '.config/nvim/init.vim' '.config/nvim/cscope_maps.vim' '.tmux.conf')
     for i in "${dot_files[@]}"
     do
-        if [ ! -f $i ]; then
-            echo ln -s ~/.dotFiles/$i $i
-            ln -s ~/.dotFiles/$i ~/$i
-        elif [ $i == ".config/nvim/init.vim" ]; then
-          if [ ! -f $i ]; then
-            echo ln -s ~/.dotFiles/$i ~/.config/nvim/init.vim
-            ln -s ~/.dotFiles/$i ~/.config/nvim/init.vim
+        if [[ $i == ".config/nvim/init.vim" ]]; then
+          if [[ ! -f $i ]]; then
+            echo ln -s $HOME/.dotFiles/$i $HOME/.config/nvim/init.vim
+            ln -s $HOME/.dotFiles/$i $HOME/.config/nvim/init.vim
           fi
-        elif [ $i == ".config/nvim/cscope_maps.vim" ]; then
-          if [ ! -f $i ]; then
-            echo ln -s ~/.dotFiles/$i ~/.config/nvim/cscope_maps.vim
-            ln -s ~/.dotFiles/$i ~/.config/nvim/cscope_maps.vim
+        elif [[ $i == ".config/nvim/cscope_maps.vim" ]]; then
+          if [[ ! -f $i ]]; then
+            echo ln -s $HOME/.dotFiles/$i $HOME/.config/nvim/cscope_maps.vim
+            ln -s $HOME/.dotFiles/$i $HOME/.config/nvim/cscope_maps.vim
           fi
+        elif [[ ! -f $i ]]; then
+            echo ln -s $HOME/.dotFiles/$i $i
+            ln -s $HOME/.dotFiles/$i $HOME/$i
         fi
     done
 }
 
-pushd ~/
+pushd $HOME/
 get_dot_files
 popd
