@@ -1,7 +1,13 @@
+#!/bin/bash
 # Pre-requesite programs:
 #   git, curl, nvim, bash, python-dev, python3-dev python3-pip
 # Other useful apps:
 #   htop, tmux, rustup, cargo, nfs-common, pynvim, plug.vim (installed when this script runs)
+
+# Global list of config files to symlink
+dot_files=('.bashrc' '.bash_aliases' '.git-prompt.sh' '.config/nvim/init.vim' '.config/nvim/cscope_maps.vim' '.tmux.conf', '.zshrc', '.zsh_aliases')
+
+# Install plug.vim if it isn't installed and symlink the config files from ~/.dotfiles to  ~/
 get_dot_files(){
     # An example of how to download this repo...
     #echo git clone https://github.com/Egod3/.dotFiles.git .dotFiles
@@ -17,25 +23,55 @@ get_dot_files(){
         mkdir -v "$NVIM_CONF_DIR"
     fi
 
-    dot_files=('.bashrc' '.bash_aliases' '.git-prompt.sh' '.config/nvim/init.vim' '.config/nvim/cscope_maps.vim' '.tmux.conf')
     for i in "${dot_files[@]}"
     do
-        if [[ $i == ".config/nvim/init.vim" ]]; then
-          if [[ ! -f $i ]]; then
-            echo ln -s $HOME/.dotFiles/$i $HOME/.config/nvim/init.vim
-            ln -s $HOME/.dotFiles/$i $HOME/.config/nvim/init.vim
-          fi
-        elif [[ $i == ".config/nvim/cscope_maps.vim" ]]; then
-          if [[ ! -f $i ]]; then
-            echo ln -s $HOME/.dotFiles/$i $HOME/.config/nvim/cscope_maps.vim
-            ln -s $HOME/.dotFiles/$i $HOME/.config/nvim/cscope_maps.vim
+        # If there is a .bashrc file locally in ~/ then move it to ~/.bashrc.bak
+        # and add a fresh symlink to the ~/.dotFiles/.bashrc file
+        if [[ $i == ".bashrc" ]]; then
+          if [[ ! -L "$HOME/.bashrc" ]]; then
+            if [[ -f "$HOME/.bashrc" ]]; then
+              mv "$HOME/.bashrc" "$HOME/.bashrc.bak"
+              echo "mv $HOME/.bashrc $HOME/.bashrc.bak"
+            fi
+            ln -s $HOME/.dotFiles/$i $HOME/$i
+            echo ln -s $HOME/.dotFiles/$i $HOME/$i
           fi
         elif [[ ! -f $i ]]; then
-            echo ln -s $HOME/.dotFiles/$i $i
+          if [[ $i == ".config/nvim/init.vim" ]]; then
+            ln -s $HOME/.dotFiles/$i $HOME/.config/nvim/init.vim
+            echo ln -s $HOME/.dotFiles/$i $HOME/.config/nvim/init.vim
+          elif [[ $i == ".config/nvim/cscope_maps.vim" ]]; then
+            ln -s $HOME/.dotFiles/$i $HOME/.config/nvim/cscope_maps.vim
+            echo ln -s $HOME/.dotFiles/$i $HOME/.config/nvim/cscope_maps.vim
+          else
             ln -s $HOME/.dotFiles/$i $HOME/$i
+            echo ln -s $HOME/.dotFiles/$i $HOME$i
+          fi
         fi
     done
 }
+
+# Check if the config files in dot_files array above
+# are symlinks if so remove them so when we run get_dot_files
+# above it will test it
+rm_dot_files()
+{
+  for i in "${dot_files[@]}"
+  do
+    if [[ -L "$HOME/$i" ]]; then
+      rm -v $HOME/$i
+    fi
+  done
+
+}
+
+if [[ $1 == "test" ]]; then
+  echo "Test flag detected, removing config files to test get_dot_files()"
+  pushd $HOME/
+  rm_dot_files
+  popd
+  echo
+fi
 
 pushd $HOME/
 get_dot_files
