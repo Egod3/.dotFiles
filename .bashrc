@@ -118,4 +118,6 @@ if ! shopt -oq posix; then
   fi
 fi
 # Add ~/.cargo/bin to the beginning of the PATH variable
-source "$HOME/.cargo/env"
+if [[ -f "$HOME/.cargo/env" ]]; then
+  source "$HOME/.cargo/env"
+fi
