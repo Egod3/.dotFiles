@@ -1,4 +1,4 @@
-# ~/.bashrc: executed by bash(1) for non-login shells.
+# $HOME/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 # My full config can be found here: https://github.com/Egod3/.dotFiles
@@ -57,7 +57,9 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
-source ~/.git-prompt.sh
+if [[ -f $HOME/.git-prompt.sh ]]; then
+  source $HOME/.git-prompt.sh
+fi
 
 export GIT_PS1_SHOWDIRTYSTATE=true
 export GIT_PS1_SHOWUNTRACKEDFILES=true
@@ -87,7 +89,7 @@ esac
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    test -r $HOME/.dircolors && eval "$(dircolors -b $HOME/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
 
     alias grep='grep --color=auto'
@@ -103,8 +105,8 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 #   pip3 install --upgrade tockloader --user # Installing collected packages: tqdm, pytoml, pyserial, crcmod, argcomplete, tockloader
 PATH="$PATH:/home/egodfrey/.local/bin"
 
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+if [[ -f $HOME/.bash_aliases ]]; then
+    source $HOME/.bash_aliases
 fi
 
 # enable programmable completion features (you don't need to enable
@@ -112,12 +114,12 @@ fi
 # sources /etc/bash.bashrc).
 if ! shopt -oq posix; then
   if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
+    source /usr/share/bash-completion/bash_completion
   elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
+    source /etc/bash_completion
   fi
 fi
-# Add ~/.cargo/bin to the beginning of the PATH variable
+# Add $HOME/.cargo/bin to the beginning of the PATH variable
 if [[ -f "$HOME/.cargo/env" ]]; then
   source "$HOME/.cargo/env"
 fi
