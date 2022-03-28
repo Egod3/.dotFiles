@@ -59,10 +59,12 @@ fi
 
 if [[ -f $HOME/.git-prompt.sh ]]; then
   source $HOME/.git-prompt.sh
+  PROMPT_COMMAND='__git_ps1 "\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w" "\\\$ "'
 fi
 
 export GIT_PS1_SHOWDIRTYSTATE=true
 export GIT_PS1_SHOWUNTRACKEDFILES=true
+export GIT_PS1_SHOWCOLORHINTS=true
 
 # Export standardized VISUAL and EDITOR env vars
 export VISUAL=nvim
