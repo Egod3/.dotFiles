@@ -8,11 +8,13 @@ ps_n(){
 
 deb_update(){
     echo
+    echo "sudo snap refresh"
     echo "sudo apt update"
     echo "sudo apt upgrade -y"
     echo "sudo apt autoremove -y"
     echo "sudo update-manager"
     echo
+    sudo snap refresh
     sudo apt update
     sudo apt upgrade -y
     sudo apt autoremove -y
