@@ -95,20 +95,16 @@ Plug 'preservim/nerdcommenter'
 Plug 'vim-scripts/TagHighlight'
 Plug 'joshdick/onedark.vim'
 Plug 'rust-lang/rust.vim'
-Plug 'neovim/nvim-lspconfig'
 Plug 'airblade/vim-gitgutter'
 Plug 'tomasr/molokai'
 Plug 'jacoborus/tender.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end()
 
 " Upon saving a buffer run :RustFmt on it
 " This is a setting for 'rust-lang/rust.vim' plugin above
 let g:rustfmt_autosave = 1
-
-" Inititalize and setup the rust_analyzer server
-" This is a setting for 'neovim/nvim-lspconfig' plugin above
-lua require'lspconfig'.rust_analyzer.setup({})
 
 syntax on
 colorscheme pablo

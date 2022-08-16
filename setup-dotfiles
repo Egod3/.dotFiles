@@ -5,7 +5,7 @@
 #   htop, tmux, rustup, cargo, nfs-common, pynvim, plug.vim (installed when this script runs)
 
 # Global list of config files to symlink
-dot_files=('.bashrc' '.bash_aliases' '.git-prompt.sh' '.config/nvim/init.vim' '.config/nvim/cscope_maps.vim' '.tmux.conf' '.zshrc' '.zsh_aliases')
+dot_files=('.bashrc' '.bash_aliases' '.git-prompt.sh' '.config/nvim/init.vim' '.config/nvim/cscope_maps.vim' '.tmux.conf' '.zshrc' '.zsh_aliases' '.vimrc')
 
 # Install plug.vim if it isn't installed and symlink the config files from ~/.dotfiles to  ~/
 get_dot_files(){
@@ -43,9 +43,12 @@ get_dot_files(){
           elif [[ $i == ".config/nvim/cscope_maps.vim" ]]; then
             ln -s $HOME/.dotFiles/$i $HOME/.config/nvim/cscope_maps.vim
             echo ln -s $HOME/.dotFiles/$i $HOME/.config/nvim/cscope_maps.vim
+          elif [[ $i == ".vimrc" ]]; then
+            ln -s $HOME/.config/nvim/init.vim $HOME/$i 
+            echo ln -s $HOME/.config/nvim/init.vim $HOME/$i 
           else
             ln -s $HOME/.dotFiles/$i $HOME/$i
-            echo ln -s $HOME/.dotFiles/$i $HOME$i
+            echo ln -s $HOME/.dotFiles/$i $HOME/$i
           fi
         fi
     done
