@@ -8,9 +8,9 @@ tmux has-session -t $SESSION_NAME &> /dev/null
 if [ $? != 0 ]
   then
   tmux -2v new-session -s $SESSION_NAME -n bld -d -c  ~/.dotFiles \; split-window -h -c ~/.dotFiles
-  tmux new-window -n src -c /mnt/NAS/data/git/tools/roll_for_initiative \; split-window -h -c /mnt/NAS/data/git/tools/roll_for_initiative
+  tmux new-window -n src -c /mnt/NAS/data/git/learning/png_sekrt/src \; split-window -h -c /mnt/NAS/data/git/learning/png_sekrt/src
   tmux new-window -n video -c /mnt/NAS/video
-  tmux new-window -n programming -c /mnt/NAS/data/git/rust/tools/rename_media \; split-window -h -c /mnt/NAS/data/git/rust/tools/rename_media
+  tmux new-window -n programming -c /mnt/NAS/data/git/tools/rename_media \; split-window -h -c /mnt/NAS/data/git/tools/rename_media
   tmux new-window -n calcualtor -c ~/
 fi
 
