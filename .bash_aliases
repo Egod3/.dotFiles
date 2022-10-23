@@ -12,12 +12,14 @@ deb_update(){
     echo "sudo apt update"
     echo "sudo apt upgrade -y"
     echo "sudo apt autoremove -y"
+    echo "sudo fwupdmgr update"
     echo "sudo update-manager"
     echo
     sudo snap refresh
     sudo apt update
     sudo apt upgrade -y
     sudo apt autoremove -y
+    sudo fwupdmgr update
     sudo update-manager
 }
 
