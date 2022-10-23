@@ -12,6 +12,8 @@ deb_update(){
     echo "sudo apt update"
     echo "sudo apt upgrade -y"
     echo "sudo apt autoremove -y"
+    echo "sudo fwupdmgr refresh"
+    echo "sudo fwupdmgr get-updates"
     echo "sudo fwupdmgr update"
     echo "sudo update-manager"
     echo
@@ -19,6 +21,8 @@ deb_update(){
     sudo apt update
     sudo apt upgrade -y
     sudo apt autoremove -y
+    sudo fwupdmgr refresh
+    sudo fwupdmgr get-updates
     sudo fwupdmgr update
     sudo update-manager
 }
