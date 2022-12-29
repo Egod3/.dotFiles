@@ -9,6 +9,7 @@ ps_n(){
 deb_update(){
     echo
     echo "sudo snap refresh"
+    echo "rustup update"
     echo "sudo apt update"
     echo "sudo apt upgrade -y"
     echo "sudo apt autoremove -y"
@@ -18,6 +19,7 @@ deb_update(){
     echo "sudo update-manager"
     echo
     sudo snap refresh
+    rustup update
     sudo apt update
     sudo apt upgrade -y
     sudo apt autoremove -y
