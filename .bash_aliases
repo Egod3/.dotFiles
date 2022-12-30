@@ -76,9 +76,7 @@ if [ -x /usr/bin/dircolors ]; then
     alias ls='ls --color=auto'
     alias dir='dir --color=auto'
     alias vdir='vdir --color=auto'
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
+    alias grep='rg '
 fi
 
 ###############################################
@@ -93,12 +91,14 @@ alias c=clear
 alias ll='ls -alFh'
 alias la='ls -A'
 alias l='ls -CFh'
-alias psg='ps aux | grep'
+alias psg='ps aux | rg'
 alias gl='git log --decorate --graph'
 alias glo='git log --decorate --graph --oneline'
 alias gb='git branch -va'
 alias gd='git diff'
-alias f='find -iname '
+#alias f='find -iname '
+alias f='fd -I '
+alias g='rg -I '
 
 alias fts='find /mnt/NAS/video/  -iname *.ts'
 alias trans=transcode

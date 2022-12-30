@@ -2,7 +2,7 @@
 # Pre-requesite programs:
 #   git, curl, nvim, bash, python-dev, python3-dev python3-pip
 # Other useful apps:
-#   htop, tmux, rustup, cargo, nfs-common, pynvim, plug.vim (installed when this script runs)
+#   htop, tmux, rustup, cargo, nfs-common, fd-find, rigprep, pynvim, plug.vim (installed when this script runs)
 
 # Global list of config files to symlink
 dot_files=('.bashrc' '.bash_aliases' '.git-prompt.sh' '.config/nvim/init.vim' '.config/nvim/cscope_maps.vim' '.tmux.conf' '.zshrc' '.zsh_aliases' '.vimrc')
@@ -44,8 +44,8 @@ get_dot_files(){
             ln -s $HOME/.dotFiles/$i $HOME/.config/nvim/cscope_maps.vim
             echo ln -s $HOME/.dotFiles/$i $HOME/.config/nvim/cscope_maps.vim
           elif [[ $i == ".vimrc" ]]; then
-            ln -s $HOME/.config/nvim/init.vim $HOME/$i 
-            echo ln -s $HOME/.config/nvim/init.vim $HOME/$i 
+            ln -s $HOME/.config/nvim/init.vim $HOME/$i
+            echo ln -s $HOME/.config/nvim/init.vim $HOME/$i
           else
             ln -s $HOME/.dotFiles/$i $HOME/$i
             echo ln -s $HOME/.dotFiles/$i $HOME/$i
