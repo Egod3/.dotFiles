@@ -16,7 +16,7 @@ deb_update(){
     echo "sudo fwupdmgr refresh"
     echo "sudo fwupdmgr get-updates"
     echo "sudo fwupdmgr update"
-    echo "sudo update-manager"
+    echo "update-manager"
     echo
     sudo snap refresh
     rustup update
@@ -26,7 +26,7 @@ deb_update(){
     sudo fwupdmgr refresh
     sudo fwupdmgr get-updates
     sudo fwupdmgr update
-    sudo update-manager
+    update-manager
 }
 
 transcode(){
@@ -97,8 +97,8 @@ alias glo='git log --decorate --graph --oneline'
 alias gb='git branch -va'
 alias gd='git diff'
 #alias f='find -iname '
-alias f='fd -I '
-alias g='rg -I '
+alias f='fd -i '
+alias g='rg -i '
 
 alias fts='find /mnt/NAS/video/  -iname *.ts'
 alias trans=transcode
