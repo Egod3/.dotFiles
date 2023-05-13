@@ -100,6 +100,7 @@ Plug 'tomasr/molokai'
 Plug 'jacoborus/tender.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'fannheyward/coc-rust-analyzer'
+Plug 'clangd/coc-clangd'
 Plug 'neovim/nvim-lspconfig'
 Plug 'simrat39/rust-tools.nvim'
 
