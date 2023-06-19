@@ -5,7 +5,7 @@
 #   htop, tmux, rustup, cargo, nfs-common, fd-find, rigprep, python3-pynvim, plug.vim (installed when this script runs)
 
 # Global list of config files to symlink
-dot_files=('.bashrc' '.bash_aliases' '.git-prompt.sh' '.config/nvim/init.lua' '.tmux.conf' '.zshrc' '.zsh_aliases')
+dot_files=('.bashrc' '.bash_aliases' '.git-prompt.sh' '.config/nvim/init.lua' '.tmux.conf')
 
 # Install plug.vim if it isn't installed and symlink the config files from ~/.dotfiles to  ~/
 get_dot_files(){
