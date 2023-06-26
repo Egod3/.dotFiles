@@ -12,11 +12,6 @@ get_dot_files(){
     # An example of how to download this repo...
     #echo git clone https://github.com/Egod3/.dotFiles.git .dotFiles
 
-    if [[ ! -f "$HOME/.local/share/nvim/site/autoload/plug.vim" ]]; then
-      echo "curl -fLo $HOME/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
-      curl -fLo $HOME/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    fi
-
     # Check if the nvim config path exists if it does not create it
     NVIM_CONF_DIR="$HOME/.config/nvim"
     if [[ ! -d "$NVIM_CONF_DIR" ]]; then
