@@ -1,27 +1,29 @@
 #!/bin/bash
 # Pre-requesite programs:
-#   git, curl, nvim, bash, python-dev, python3-dev python3-pip
+#   git, curl, nvim, bash, python-dev, python3-dev, python3-pip
 # Other useful apps:
-#   htop, tmux, rustup, cargo, nfs-common, fd-find, rigprep, python3-pynvim, plug.vim (installed when this script runs)
+#   apt install:
+#       htop, tmux, rustup, cargo, nfs-common, python3-pynvim, libssl-dev,
+#   cargo install:
+#       fd-find, rigprep, cargo-msrv, cargo-update, cargo-binutils,
 
 # Global list of config files to symlink
 dot_files=('.bashrc' '.bash_aliases' '.git-prompt.sh' '.config/nvim/init.lua' '.tmux.conf')
 
-# Install plug.vim if it isn't installed and symlink the config files from ~/.dotfiles to  ~/
-get_dot_files(){
+set_dot_files(){
     # An example of how to download this repo...
     #echo git clone https://github.com/Egod3/.dotFiles.git .dotFiles
 
     # Check if the nvim config path exists if it does not create it
     NVIM_CONF_DIR="$HOME/.config/nvim"
     if [[ ! -d "$NVIM_CONF_DIR" ]]; then
-        mkdir -v "$NVIM_CONF_DIR"
+        mkdir -vp "$NVIM_CONF_DIR"
     fi
 
     for i in "${dot_files[@]}"
     do
         # If there is a .bashrc file locally in ~/ then move it to ~/.bashrc.bak
-        # and add a fresh symlink to the ~/.dotFiles/.bashrc file
+        # and add a symlink to ~/.dotFiles/.bashrc
         if [[ $i == ".bashrc" ]]; then
           if [[ ! -L "$HOME/.bashrc" ]]; then
             if [[ -f "$HOME/.bashrc" ]]; then
@@ -44,7 +46,7 @@ get_dot_files(){
 }
 
 # Check if the config files in dot_files array above
-# are symlinks if so remove them so when we run get_dot_files
+# are symlinks if so remove them so when we run set_dot_files
 # above it will test it
 rm_dot_files()
 {
@@ -58,7 +60,7 @@ rm_dot_files()
 }
 
 if [[ $1 == "test" ]]; then
-  echo "Test flag detected, removing config files to test get_dot_files()"
+  echo "Test flag detected, removing config files to test set_dot_files()"
   pushd $HOME/
   rm_dot_files
   popd
@@ -66,5 +68,5 @@ if [[ $1 == "test" ]]; then
 fi
 
 pushd $HOME/
-get_dot_files
+set_dot_files
 popd

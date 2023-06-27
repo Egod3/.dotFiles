@@ -10,6 +10,7 @@ deb_update(){
     echo
     echo "sudo snap refresh"
     echo "rustup update"
+    echo "cargo install-update -a"
     echo "sudo apt update"
     echo "sudo apt upgrade -y"
     echo "sudo apt autoremove -y"
@@ -20,6 +21,7 @@ deb_update(){
     echo
     sudo snap refresh
     rustup update
+    cargo install-update -a
     sudo apt update
     sudo apt upgrade -y
     sudo apt autoremove -y
