@@ -204,7 +204,7 @@ require('lazy').setup({
   -- { import = 'custom.plugins' },
 }, {})
 
--- [[ Setting options ]]
+-- [[ Setting options 
 -- See `:help vim.o`
 
 -- Set highlight on search
@@ -245,7 +245,7 @@ vim.o.completeopt = 'menuone,noselect'
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
 
--- [[ Basic Keymaps ]]
+-- [[ Basic Keymaps 
 
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
@@ -255,7 +255,7 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
--- [[ Highlight on yank ]]
+-- [[ Highlight on yank 
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
 vim.api.nvim_create_autocmd('TextYankPost', {
@@ -266,7 +266,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
 })
 
--- [[ Configure Telescope ]]
+-- [[ Configure Telescope 
 -- See `:help telescope` and `:help telescope.setup()`
 require('telescope').setup {
   defaults = {
@@ -300,7 +300,7 @@ vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { de
 vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
 
--- [[ Configure Treesitter ]]
+-- [[ Configure Treesitter 
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter

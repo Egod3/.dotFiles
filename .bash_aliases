@@ -1,6 +1,74 @@
 ###############################################
 ####               FUNCTIONS               ####
 ###############################################
+rust_check_clean(){
+  echo "cargo clean"
+  cargo clean
+  if [[ $? != 0 ]]; then
+    echo "Error running cargo clean, bailing"
+    return;
+  fi
+  echo "cargo build"
+  cargo build
+  if [[ $? != 0 ]]; then
+    echo "Error running cargo build, bailing"
+    return;
+  fi
+  echo "cargo fmt --check"
+  cargo fmt --check
+  if [[ $? != 0 ]]; then
+    echo "Error running cargo fmt --check, bailing"
+    return;
+  fi
+  echo "cargo clippy"
+  cargo clippy
+  if [[ $? != 0 ]]; then
+    echo "Error running cargo clippy, bailing"
+    return;
+  fi
+}
+
+rust_check(){
+  echo "cargo build"
+  cargo build
+  if [[ $? != 0 ]]; then
+    echo "Error running cargo build, bailing"
+    return;
+  fi
+  echo "cargo fmt --check"
+  cargo fmt --check
+  if [[ $? != 0 ]]; then
+    echo "Error running cargo fmt --check, bailing"
+    return;
+  fi
+  echo "cargo clippy"
+  cargo clippy
+  if [[ $? != 0 ]]; then
+    echo "Error running cargo clippy, bailing"
+    return;
+  fi
+}
+
+rust_check_all(){
+  rust_check
+  echo "cargo msrv"
+  cargo msrv
+  if [[ $? != 0 ]]; then
+    echo "Error running cargo msrv, bailing"
+    return;
+  fi
+  #echo "cargo test -- --show-output"
+  #cargo test -- --show-output
+  #if [[ $? != 0 ]]; then
+  #  echo "Error running cargo test -- --show-output, bailing"
+  #  return;
+  #fi
+}
+
+alias cargo_check_all=rust_check_all
+alias cargo_check=rust_check
+alias cargo_check_clean=rust_check_clean
+
 ps_n(){
     echo ps -t pts/$1 -o pid,ppid,tty,stat,args,wchan
     ps -t pts/$1 -o pid,ppid,tty,stat,args,wchan

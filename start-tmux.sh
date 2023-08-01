@@ -17,8 +17,8 @@ if [ $? != 0 ]
   tmux -2v new-session -s $SESSION_NAME -n dotFiles -d -c  ~/.dotFiles
   tmux split-window -h -c                                  ~/.dotFiles
   # 1
-  tmux new-window -n png_sekrt -c /mnt/NAS/data/git/learning/rust/png_sekrt
-  tmux split-window -h -c         /mnt/NAS/data/git/learning/rust/png_sekrt/src
+  tmux new-window -n character -c /mnt/NAS/data/git/tools/character
+  tmux split-window -h -c         /mnt/NAS/data/git/tools/character/src
   # 2
 #  tmux new-window -n rename_media -c /mnt/NAS/data/git/tools/rename_media
 #  tmux split-window -h -c            /mnt/NAS/data/git/tools/rename_media/src
