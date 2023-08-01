@@ -25,8 +25,6 @@ if [ $? != 0 ]
   # 2
   tmux new-window -n stm32 -c /mnt/NAS/data/git/rust_embd/apps/stm32-rs
   tmux split-window -h -c     /mnt/NAS/data/git/rust_embd/apps/stm32-rs
-  tmux selectp -t 0
-  tmux split-window -v -c     /mnt/NAS/data/git/rust_embd/apps/stm32-rs
   # 3
   tmux new-window -n si70xx -c /mnt/NAS/data/git/rust_embd/libs/si70xx
   tmux split-window -h -c      /mnt/NAS/data/git/rust_embd/libs/si70xx
@@ -37,6 +35,9 @@ if [ $? != 0 ]
   tmux split-window -v -c      /mnt/NAS/data/git/rust_embd/oses/tock
   # 5
   tmux new-window -n video -c /mnt/NAS/video
+  # 6
+  tmux new-window -n tockloader -c /mnt/NAS/data/git/rust_embd/tools/tockloader
+  tmux split-window -h -c /mnt/NAS/data/git/rust_embd/tools/tockloader
 
 fi
 
