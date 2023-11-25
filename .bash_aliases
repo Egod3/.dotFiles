@@ -35,6 +35,12 @@ rust_check(){
     echo "Error running cargo build, bailing"
     return;
   fi
+  echo "cargo build -r"
+  cargo build -r
+  if [[ $? != 0 ]]; then
+    echo "Error running cargo build -r, bailing"
+    return;
+  fi
   echo "cargo fmt --check"
   cargo fmt --check
   if [[ $? != 0 ]]; then
@@ -45,6 +51,12 @@ rust_check(){
   cargo clippy
   if [[ $? != 0 ]]; then
     echo "Error running cargo clippy, bailing"
+    return;
+  fi
+  echo "cargo doc"
+  cargo doc
+  if [[ $? != 0 ]]; then
+    echo "Error running cargo doc, bailing"
     return;
   fi
 }
