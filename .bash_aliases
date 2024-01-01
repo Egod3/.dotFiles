@@ -165,7 +165,6 @@ fi
 ####                ALIASES                ####
 ###############################################
 alias update='deb_update'
-alias work_rdp='rdesktop_work'
 
 alias psn='ps_n'
 

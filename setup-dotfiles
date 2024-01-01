@@ -10,7 +10,7 @@
 #       fd-find rigprep cargo-msrv cargo-update cargo-binutils clippy
 
 # Global list of config files to symlink
-dot_files=('.bashrc' '.bash_aliases' '.git-prompt.sh' '.config/nvim/init.lua' '.tmux.conf')
+dot_files=('.bashrc' '.bash_aliases' '.git-prompt.sh' '.config/nvim/init.lua' '.tmux.conf' '.config/gdb/gdbinit')
 
 set_dot_files(){
     # An example of how to download this repo...
@@ -36,13 +36,8 @@ set_dot_files(){
             echo ln -s $HOME/.dotFiles/$i $HOME/$i
           fi
         elif [[ ! -f $i ]]; then
-          if [[ $i == ".config/nvim/init.lua" ]]; then
-            ln -s $HOME/.dotFiles/$i $HOME/.config/nvim/init.lua
-            echo ln -s $HOME/.dotFiles/$i $HOME/.config/nvim/init.lua
-          else
-            ln -s $HOME/.dotFiles/$i $HOME/$i
-            echo ln -s $HOME/.dotFiles/$i $HOME/$i
-          fi
+          ln -s $HOME/.dotFiles/$i $HOME/$i
+          echo ln -s $HOME/.dotFiles/$i $HOME/$i
         fi
     done
 }

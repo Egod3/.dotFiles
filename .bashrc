@@ -73,8 +73,6 @@ export EDITOR="$VISUAL"
 # Export GIT_EDITOR env var just to be thorough
 export GIT_EDITOR=nvim
 
-export ZEPHYR_TOOLCHAIN_VARIANT=/mnt/NAS/data/git/rust_embd/oses/zephyr-sdk-0.16.1
-
 if [ "$color_prompt" == yes ]; then
     PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w$(__git_ps1 " (%s)")\[\033[00m\]\$ '
 else
@@ -103,11 +101,6 @@ fi
 
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
-# This was added when installing the tockloader, the boot loader used to load apps on the tock
-# Embedded rust OS.
-# Update path to add these packages to the PATH variable, installed as part of this command:
-#   pip3 install --upgrade tockloader --user # Installing collected packages: tqdm, pytoml, pyserial, crcmod, argcomplete, tockloader
-PATH="$PATH:/home/egodfrey/.local/bin"
 
 if [[ -f $HOME/.bash_aliases ]]; then
     source $HOME/.bash_aliases
@@ -126,4 +119,17 @@ fi
 # Add $HOME/.cargo/bin to the beginning of the PATH variable
 if [[ -f "$HOME/.cargo/env" ]]; then
   source "$HOME/.cargo/env"
+fi
+
+# This was added when installing the tockloader, the boot loader used to load apps on the tock
+# Embedded rust OS.
+# Update path to add these packages to the PATH variable, installed as part of this command:
+#   pip3 install --upgrade tockloader --user # Installing collected packages: tqdm, pytoml, pyserial, crcmod, argcomplete, tockloader
+if [[ "$HOSTNAME" == "ezra-lnx" && "$USERNAME" == "ezra" ]]; then
+    PATH="$PATH:$HOME/.local/bin"
+fi
+
+# Only override the ZEPHYR_TOOLCHAIN_VARIANT install location if on my personal host
+if [[ "$HOSTNAME" == "ezra-lnx" && "$USERNAME" == "ezra" ]]; then
+    export ZEPHYR_TOOLCHAIN_VARIANT=/mnt/NAS/data/git/rust_embd/oses/zephyr-sdk-0.16.1
 fi

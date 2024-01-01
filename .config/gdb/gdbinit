@@ -1,0 +1,10 @@
+# Turn off the "Quit anyway? (y or n)" prompt GDB prints when a remote debugger is attached..
+define hook-quit
+    set confirm off
+end
+
+set history save on
+set history size 100000
+# Remove duplicates back halfway through the circular buffer
+set history remove-duplicates 50000
+set history filename ~/.gdb_history
