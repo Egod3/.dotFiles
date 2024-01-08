@@ -535,3 +535,6 @@ cmp.setup {
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
+
+-- Set the default vim colorscheme to dichromatic
+vim.cmd("colorscheme dichromatic")

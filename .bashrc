@@ -17,8 +17,10 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+# Save up to 1000 characeters per command
 HISTSIZE=1000
-HISTFILESIZE=2000
+# Save up to 200,000 commands in the history
+HISTFILESIZE=2000000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -59,12 +61,13 @@ fi
 
 if [[ -f $HOME/.git-prompt.sh ]]; then
   source $HOME/.git-prompt.sh
-  PROMPT_COMMAND='__git_ps1 "\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w" "\\\$ "'
+  export GIT_PS1_SHOWDIRTYSTATE=true
+  export GIT_PS1_SHOWUNTRACKEDFILES=true
+  export GIT_PS1_SHOWCOLORHINTS=true
 fi
 
-export GIT_PS1_SHOWDIRTYSTATE=true
-export GIT_PS1_SHOWUNTRACKEDFILES=true
-export GIT_PS1_SHOWCOLORHINTS=true
+export PS1="\[$(tput setaf 2)\]\u@\h:\W\$(__git_ps1)\$ \[$(tput sgr0)\]"
+unset color_prompt force_color_prompt
 
 # Export standardized VISUAL and EDITOR env vars
 export VISUAL=nvim
@@ -72,22 +75,6 @@ export EDITOR="$VISUAL"
 
 # Export GIT_EDITOR env var just to be thorough
 export GIT_EDITOR=nvim
-
-if [ "$color_prompt" == yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w$(__git_ps1 " (%s)")\[\033[00m\]\$ '
-else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w$(__git_ps1 " (%s)")\$ '
-fi
-unset color_prompt force_color_prompt
-
-# If this is an xterm set the title to user@host:dir
-case "$TERM" in
-xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)$(__git_ps1 " (%s)")}\u@\h: \w\a\]$PS1"
-    ;;
-*)
-    ;;
-esac
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -101,6 +88,12 @@ fi
 
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+
+## Add Matt's devtools scripts to the path:
+PATH="$PATH:$HOME/bin/devtools"
+
+## Add default go app install to path
+PATH="$PATH:$HOME/go/bin"
 
 if [[ -f $HOME/.bash_aliases ]]; then
     source $HOME/.bash_aliases
@@ -116,7 +109,8 @@ if ! shopt -oq posix; then
     source /etc/bash_completion
   fi
 fi
-# Add $HOME/.cargo/bin to the beginning of the PATH variable
+#
+# Source $HOME/.cargo/env to enable cargo
 if [[ -f "$HOME/.cargo/env" ]]; then
   source "$HOME/.cargo/env"
 fi
@@ -132,4 +126,14 @@ fi
 # Only override the ZEPHYR_TOOLCHAIN_VARIANT install location if on my personal host
 if [[ "$HOSTNAME" == "ezra-lnx" && "$USERNAME" == "ezra" ]]; then
     export ZEPHYR_TOOLCHAIN_VARIANT=/mnt/NAS/data/git/rust_embd/oses/zephyr-sdk-0.16.1
+fi
+
+# Add the $HOME/.fli_funcs to the path to enable additional functions
+if [[ -f "$HOME/.dotFiles/.fli_funcs" ]]; then
+   PATH="$PATH:$HOME/.dotFiles/.fli_funcs"
+fi
+
+# Add Intel Quartus Prime bin folder to path
+if [[ -d "$HOME/intelFPGA_pro/21.2/qprogrammer/quartus/bin" ]]; then
+   PATH="$PATH:$HOME/intelFPGA_pro/21.2/qprogrammer/quartus/bin"
 fi

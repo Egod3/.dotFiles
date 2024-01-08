@@ -97,7 +97,6 @@ deb_update(){
     echo "sudo fwupdmgr refresh"
     echo "sudo fwupdmgr get-updates"
     echo "sudo fwupdmgr update"
-    echo "update-manager"
     echo
     sudo snap refresh
     rustup update
@@ -108,63 +107,23 @@ deb_update(){
     sudo fwupdmgr refresh
     sudo fwupdmgr get-updates
     sudo fwupdmgr update
-    update-manager
 }
 
-transcode(){
-   echo "/mnt/NAS/data/git/scripts/transcode.py -i /mnt/NAS/video/tv\ shows/ -v -t"
-   /mnt/NAS/data/git/scripts/transcode.py -i /mnt/NAS/video/tv\ shows/ -v -t
+color_test(){
+  for C in {0..255}; do
+      tput setab $C
+      echo -n "$C "
+  done
+  tput sgr0
+  echo
 }
-
-rename(){
-  echo "/mnt/NAS/data/git/scripts/rename_media.py -i /mnt/NAS/video/ -v -r"
-  /mnt/NAS/data/git/scripts/rename_media.py -i /mnt/NAS/video/ -v -r
-}
-
-# Check if any files need to be renamed.
-# Basically don't pass in the -r (rename) flag
-check_rename(){
-  echo "/mnt/NAS/data/git/scripts/rename_media.py -i /mnt/NAS/video/ -v"
-  /mnt/NAS/data/git/scripts/rename_media.py -i /mnt/NAS/video/ -v
-}
-
-# Function to build and test roll_for_initiative and any
-# libraries it uses
-build_rfi(){
-  rfi_path="/mnt/NAS/data/git/tools/roll_for_initiative"
-  character_path="/mnt/NAS/data/git/tools/character"
-  if [ $PWD=$rfi_path ]
-  then
-    echo "cd ../character/ && cargo build && cargo test -- --test-threads=2 $1\
-      && echo && echo && echo && cd ../roll_for_initiative/ && cargo build && cargo run"
-    cd ../character/ && cargo build && cargo test -- --test-threads=2 $1 && \
-      echo && echo && echo && cd ../roll_for_initiative/ && cargo build && cargo run
-  elif [ $PWD=$character_path ]
-  then
-    echo "cd ../roll_for_initiative/ && cargo build && cargo run && echo && echo && echo && \
-      cd ../character/ && cargo build && cargo test -- --test-threads=2 $1"
-    cd ../roll_for_initiative/ && cargo build && cargo run && echo && echo && echo && \
-      cd ../character/ && cargo build && cargo test -- --test-threads=2 $1
-  fi
-}
-
-build_rfi_dbg(){
-  build_rfi "--show-output"
-}
-
-# enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    alias dir='dir --color=auto'
-    alias vdir='vdir --color=auto'
-    alias grep='rg '
-fi
 
 ###############################################
 ####                ALIASES                ####
 ###############################################
+alias is_py_venv='echo $VIRTUAL_ENV'
 alias update='deb_update'
+alias color_test='color_test'
 
 alias psn='ps_n'
 
@@ -185,4 +144,5 @@ alias fts='find /mnt/NAS/video/  -iname *.ts'
 alias trans=transcode
 
 alias start_tmux='~/.dotFiles/start-tmux.sh'
-alias vim='/usr/local/bin/nvim'
+alias vim='/usr/bin/nvim'
+alias grep='rg '
