@@ -80,6 +80,8 @@ export GIT_EDITOR=nvim
 if [ -x /usr/bin/dircolors ]; then
     test -r $HOME/.dircolors && eval "$(dircolors -b $HOME/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
+    alias ip='ip --color=auto'
+    alias diff='diff --color=auto'
 
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
@@ -128,9 +130,9 @@ if [[ "$HOSTNAME" == "ezra-lnx" && "$USERNAME" == "ezra" ]]; then
     export ZEPHYR_TOOLCHAIN_VARIANT=/mnt/NAS/data/git/rust_embd/oses/zephyr-sdk-0.16.1
 fi
 
-# Add the $HOME/.fli_funcs to the path to enable additional functions
+# Source bash functions
 if [[ -f "$HOME/.dotFiles/.fli_funcs" ]]; then
-   PATH="$PATH:$HOME/.dotFiles/.fli_funcs"
+   source "$HOME/.dotFiles/.fli_funcs"
 fi
 
 # Add Intel Quartus Prime bin folder to path

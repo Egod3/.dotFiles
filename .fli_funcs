@@ -1,26 +1,6 @@
 #!/bin/bash
 
-log_root=/workspace/logs/uart
-
-# This file is used to place helper functions for tasks I do often for FLI projects
-function f446re_uart
+function openocd_reset
 {
-    port=/dev/serial/by-id/usb-STMicroelectronics_STM32_STLink_066DFF545383564867215324-if02
-    now=$(date +%H:%M:%S)
-    log_file="$(get_log_dir)/STM32_STLink_066DFF545383564867215324-if02-$now.log"
-    echo "log_file: $log_file"
-    # Command to connect to the UART for the nucleo_f446re board
-    echo "sudo minicom -w -b 115200 -D $port"
-    sudo minicom -w -b 115200 -D $port
+    /home/eg/zephyr-sdk-0.16.4/sysroots/x86_64-pokysdk-linux/usr/bin/openocd -s /workspace/fli-scalar/fli-scalar_0/cxp-zephyr-scalar-mz/boards/arm/cyclone_xp/support -f /workspace/fli-scalar/fli-scalar_0/cxp-zephyr-scalar-mz/boards/arm/cyclone_xp/support/openocd.cfg -c 'init' -c 'targets' -c 'reset' -c 'shutdown'
 }
-
-function get_log_dir
-{
-    log_dir="$log_root/$(date +%Y-%m-%d)"
-    if [ ! -d "$log_dir" ]; then
-        mkdir "$log_dir"
-    fi
-    echo "$log_dir"
-}
-
-f446re_uart

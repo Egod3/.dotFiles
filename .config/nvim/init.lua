@@ -44,6 +44,29 @@ vim.g.maplocalleader = ' '
 -- Configure rustlang/rust.vim to run cargo fmt on saving a buffer
 vim.g.rustfmt_autosave = 1
 
+-- Configure NerdTree to open (toggle) with <CTRL> n
+-- vim.g.nnoremap <C-n> :NERDTree<CR>
+vim.api.nvim_set_keymap(
+  "n",
+  "<C-n>",
+  ":NERDTreeToggle<cr>",
+  { noremap = true }
+ )
+-- vim.g.nnoremap <C-t> :NERDTreeToggle<CR>
+vim.api.nvim_set_keymap(
+  "n",
+  "<C-t>",
+  ":NERDTreeToggle<cr>",
+  { noremap = true }
+ )
+-- vim.g.nnoremap <C-m> :NERDTreeFind<CR>
+vim.api.nvim_set_keymap(
+  "n",
+  "<C-m>",
+  ":NERDTreeMirror<cr>",
+  { noremap = true }
+ )
+
 -- Install package manager
 --    https://github.com/folke/lazy.nvim
 --    `:help lazy.nvim.txt` for more info
@@ -78,6 +101,9 @@ require('lazy').setup({
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
 
+  -- Install NerdTree
+  'preservim/nerdtree',
+
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
   {
@@ -88,6 +114,9 @@ require('lazy').setup({
       { 'williamboman/mason.nvim', config = true },
       'williamboman/mason-lspconfig.nvim',
 
+    opts = {
+      inlay_hints = { enabled = true },
+    },
       -- Useful status updates for LSP
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
       { 'j-hui/fidget.nvim', tag = 'legacy', opts = {}, },
@@ -262,6 +291,14 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
   group = highlight_group,
   pattern = '*',
+})
+
+-- Enable syntax highlighting for .overlay files to
+-- be highlighted like a .dts file.
+-- More info here: https://neovim.io/doc/user/lua-guide.html#lua-guide-autocommands
+vim.api.nvim_create_autocmd({"BufRead","BufNewFile"}, {
+  pattern = {"*.overlay"},
+  command = "set filetype=dts"
 })
 
 -- [[ Configure Telescope 

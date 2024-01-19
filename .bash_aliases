@@ -143,6 +143,6 @@ alias g='rg -i '
 alias fts='find /mnt/NAS/video/  -iname *.ts'
 alias trans=transcode
 
-alias start_tmux='~/.dotFiles/start-tmux.sh'
+alias start_tmux='~/start-tmux.sh'
 alias vim='/usr/bin/nvim'
 alias grep='rg '
