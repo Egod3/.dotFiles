@@ -121,9 +121,8 @@ fi
 # Embedded rust OS.
 # Update path to add these packages to the PATH variable, installed as part of this command:
 #   pip3 install --upgrade tockloader --user # Installing collected packages: tqdm, pytoml, pyserial, crcmod, argcomplete, tockloader
-if [[ "$HOSTNAME" == "ezra-lnx" && "$USERNAME" == "ezra" ]]; then
-    PATH="$PATH:$HOME/.local/bin"
-fi
+# This is also needed for some python libs, so making it generic for all machines.
+PATH="$PATH:$HOME/.local/bin"
 
 # Only override the ZEPHYR_TOOLCHAIN_VARIANT install location if on my personal host
 if [[ "$HOSTNAME" == "ezra-lnx" && "$USERNAME" == "ezra" ]]; then

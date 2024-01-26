@@ -121,7 +121,6 @@ color_test(){
 ###############################################
 ####                ALIASES                ####
 ###############################################
-alias is_py_venv='echo $VIRTUAL_ENV'
 alias update='deb_update'
 alias color_test='color_test'
 
@@ -136,7 +135,6 @@ alias gl='git log --decorate --graph'
 alias glo='git log --decorate --graph --oneline'
 alias gb='git branch -va'
 alias gd='git diff'
-#alias f='find -iname '
 alias f='fd -i '
 alias g='rg -i '
 
@@ -146,3 +144,5 @@ alias trans=transcode
 alias start_tmux='~/start-tmux.sh'
 alias vim='/usr/bin/nvim'
 alias grep='rg '
+### To ignore all .gitignore .rgignore and other ignore files use --no-ignore
+#alias grep='rg --no-ignore'
