@@ -67,6 +67,17 @@ vim.api.nvim_set_keymap(
   { noremap = true }
  )
 
+-- On any write to a buffer strip trailing whitespace and
+-- keep the cursor in it's original position.
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+    pattern = {"*"},
+    callback = function()
+      local save_cursor = vim.fn.getpos(".")
+      pcall(function() vim.cmd [[%s/\s\+$//e]] end)
+      vim.fn.setpos(".", save_cursor)
+    end,
+})
+
 -- Install package manager
 --    https://github.com/folke/lazy.nvim
 --    `:help lazy.nvim.txt` for more info
@@ -231,7 +242,7 @@ require('lazy').setup({
   -- { import = 'custom.plugins' },
 }, {})
 
--- [[ Setting options 
+-- [[ Setting options
 -- See `:help vim.o`
 
 -- Set highlight on search
@@ -272,7 +283,7 @@ vim.o.completeopt = 'menuone,noselect'
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
 
--- [[ Basic Keymaps 
+-- [[ Basic Keymaps
 
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
@@ -282,7 +293,7 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
--- [[ Highlight on yank 
+-- [[ Highlight on yank
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
 vim.api.nvim_create_autocmd('TextYankPost', {
@@ -301,7 +312,7 @@ vim.api.nvim_create_autocmd({"BufRead","BufNewFile"}, {
   command = "set filetype=dts"
 })
 
--- [[ Configure Telescope 
+-- [[ Configure Telescope
 -- See `:help telescope` and `:help telescope.setup()`
 require('telescope').setup {
   defaults = {
@@ -362,7 +373,7 @@ end)
 
 require("ibl").setup { indent = { highlight = highlight } }
 
--- [[ Configure Treesitter 
+-- [[ Configure Treesitter
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
