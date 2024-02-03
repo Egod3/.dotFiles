@@ -165,14 +165,33 @@ alias gd='git diff'
 alias f='fd -i '
 alias g='rg -i '
 
-alias nqma_cp='/workspace/fli/fli-utils/scripts/nqma_deploy.sh'
-alias find_nqma='sudo nmap -sn 172.16.1.0/24 | grep nqma'
+username=$(whoami)
+# Only add these work aliases if on my work host
+if [ "$HOSTNAME" = "eg-linux" ] && [ "$username" = "eg" ]; then
+  alias nqma_cp='/workspace/tools/fli-utils/scripts/nqma_deploy.sh'
+  alias find_nqma='sudo nmap -sn 172.16.1.0/24 | grep nqma'
+fi
 
 alias start_tmux='~/start-tmux.sh'
 alias vim='/usr/bin/nvim'
 alias pgrep='pgrep -l'
 alias grep='rg '
 ### To ignore all .gitignore .rgignore and other ignore files use --no-ignore
-#alias grep='rg --no-ignore'
+alias gni='rg --no-ignore'
 ### To search for files of a specific type, like *.h, try this:
-#alias grep_type='rg -t h'
+alias gtype='rg -t h'
+alias vim='/usr/local/bin/nvim'
+
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r $HOME/.dircolors && eval "$(dircolors -b $HOME/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    alias ip='ip --color=auto'
+    alias diff='diff --color=auto'
+    alias grep='rg --color=auto'
+    alias gi='rg --no-ignore --color=auto'
+    ### To ignore all .gitignore .rgignore and other ignore files use --no-ignore
+    #alias grep='rg --no-ignore'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi

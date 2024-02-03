@@ -1,13 +1,13 @@
 #!/bin/bash
 # Pre-requesite programs:
-#   git, curl, nvim, bash, python-dev, python3-dev, python3-pip
+#   git, curl, nvim, bash, python-dev, python3-dev, python3-pip,
 # Other useful apps:
 #   apt install:
-#       htop tmux cargo nfs-common python3-pynvim libssl-dev
-#   rustup install:
-#
+#       htop tmux cargo nfs-common python3-pynvim libssl-dev gdb openocd
 #   cargo install:
-#       fd-find rigprep cargo-msrv cargo-update cargo-binutils clippy cargo-zigbuild
+#       cargo-msrv cargo-update cargo-binutils fd-find flip-link hexyl itm
+#       ripgrep cargo-generate cargo-zigbuild
+#       probe-rs --features cli
 
 # Global list of config files to symlink
 dot_files=('.bashrc' '.bash_aliases' '.git-prompt.sh' '.config/nvim/init.lua' '.tmux.conf' '.gdbinit' '.config/pycodestyle' '.telnetrc')

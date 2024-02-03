@@ -75,19 +75,6 @@ export EDITOR="$VISUAL"
 
 # Export GIT_EDITOR env var just to be thorough
 export GIT_EDITOR=nvim
-
-# enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-    test -r $HOME/.dircolors && eval "$(dircolors -b $HOME/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    alias ip='ip --color=auto'
-    alias diff='diff --color=auto'
-
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-fi
-
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
@@ -105,7 +92,6 @@ if ! shopt -oq posix; then
     source /etc/bash_completion
   fi
 fi
-#
 # Source $HOME/.cargo/env to enable cargo
 if [[ -f "$HOME/.cargo/env" ]]; then
   source "$HOME/.cargo/env"
