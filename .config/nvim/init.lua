@@ -115,6 +115,9 @@ require('lazy').setup({
   -- Install NerdTree
   'preservim/nerdtree',
 
+  -- Install vim-bitbake plugin
+  'kergoth/vim-bitbake',
+
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
   {
