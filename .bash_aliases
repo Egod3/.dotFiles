@@ -146,3 +146,5 @@ alias vim='/usr/bin/nvim'
 alias grep='rg '
 ### To ignore all .gitignore .rgignore and other ignore files use --no-ignore
 #alias grep='rg --no-ignore'
+### To search for files of a specific type, like *.h, try this:
+#alias grep_type='rg -t h'
