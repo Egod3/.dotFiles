@@ -124,6 +124,8 @@ color_test(){
 alias update='deb_update'
 alias color_test='color_test'
 
+alias setup_west='source /workspace/fli-scalar/fli-scalar_0/.venv/bin/activate'
+
 alias psn='ps_n'
 
 alias c=clear

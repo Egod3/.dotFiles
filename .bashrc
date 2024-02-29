@@ -124,9 +124,17 @@ fi
 # This is also needed for some python libs, so making it generic for all machines.
 PATH="$PATH:$HOME/.local/bin"
 
+username=$(whoami)
 # Only override the ZEPHYR_TOOLCHAIN_VARIANT install location if on my personal host
-if [[ "$HOSTNAME" == "ezra-lnx" && "$USERNAME" == "ezra" ]]; then
+if [ "$HOSTNAME" = "ezra-lnx" ] && [ "$username" == "ezra" ]; then
     export ZEPHYR_TOOLCHAIN_VARIANT=/mnt/NAS/data/git/rust_embd/oses/zephyr-sdk-0.16.1
+fi
+
+# Only source ~/.work_conf if on my work host
+if [ "$HOSTNAME" = "eg-linux" ] && [ "$username" = "eg" ]; then
+    if [ -f ~/.work_conf ]; then
+        source ~/.work_conf
+    fi
 fi
 
 # Source bash functions
