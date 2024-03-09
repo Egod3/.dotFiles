@@ -108,8 +108,10 @@ fi
 
 username=$(whoami)
 # Only override the ZEPHYR_TOOLCHAIN_VARIANT install location if on my personal host
-if [ "$HOSTNAME" = "ezra-lnx" ] && [ "$username" == "ezra" ]; then
-    export ZEPHYR_TOOLCHAIN_VARIANT=/mnt/NAS/data/git/rust_embd/oses/zephyr-sdk-0.16.1
+  # source /mnt/NAS/data/git/rust_embd/oses/zephyrproject/.venv/bin/activate
+if [ "$HOSTNAME" = "ezra-lnx" ] && [ "$username" = "ezra" ]; then
+    unset ZEPHYR_TOOLCHAIN_VARIANT
+    export ZEPHYR_SDK_INSTALL_DIR=/mnt/NAS/data/git/rust_embd/oses/zephyr-sdk-0.16.5
 fi
 
 if [ "$HOSTNAME" = "eg-linux" ] && [ "$username" = "eg" ]; then
