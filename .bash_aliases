@@ -125,6 +125,7 @@ alias update='deb_update'
 alias color_test='color_test'
 
 alias setup_west='source /workspace/fli-scalar/fli-scalar_0/.venv/bin/activate'
+alias setup_zephyr=setup_west
 
 alias psn='ps_n'
 
@@ -140,8 +141,7 @@ alias gd='git diff'
 alias f='fd -i '
 alias g='rg -i '
 
-alias fts='find /mnt/NAS/video/  -iname *.ts'
-alias trans=transcode
+alias nqma_cp='/workspace/tools/fli-utils/scripts/nqma_deploy.sh'
 
 alias start_tmux='~/start-tmux.sh'
 alias vim='/usr/bin/nvim'
