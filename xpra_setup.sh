@@ -1,5 +1,5 @@
 #!/bin/bash
-xpra start :10 --bind-tcp=0.0.0.0:10000
+xpra start :11
 
-export DISPLAY=:10
+export DISPLAY=:11
 echo "DISPLAY = $DISPLAY"
