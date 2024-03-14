@@ -145,6 +145,7 @@ alias nqma_cp='/workspace/tools/fli-utils/scripts/nqma_deploy.sh'
 
 alias start_tmux='~/start-tmux.sh'
 alias vim='/usr/bin/nvim'
+alias pgrep='pgrep -l'
 alias grep='rg '
 ### To ignore all .gitignore .rgignore and other ignore files use --no-ignore
 #alias grep='rg --no-ignore'
