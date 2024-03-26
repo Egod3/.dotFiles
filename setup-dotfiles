@@ -10,7 +10,7 @@
 #       fd-find rigprep cargo-msrv cargo-update cargo-binutils clippy cargo-zigbuild
 
 # Global list of config files to symlink
-dot_files=('.bashrc' '.bash_aliases' '.git-prompt.sh' '.config/nvim/init.lua' '.tmux.conf' '.config/gdb/gdbinit')
+dot_files=('.bashrc' '.bash_aliases' '.git-prompt.sh' '.config/nvim/init.lua' '.tmux.conf' '.gdbinit' '.config/pycodestyle')
 
 set_dot_files(){
     # An example of how to download this repo...
