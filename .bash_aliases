@@ -142,6 +142,7 @@ alias f='fd -i '
 alias g='rg -i '
 
 alias nqma_cp='/workspace/tools/fli-utils/scripts/nqma_deploy.sh'
+alias find_nqma='sudo nmap -sn 172.16.1.0/24 | grep nqma'
 
 alias start_tmux='~/start-tmux.sh'
 alias vim='/usr/bin/nvim'
