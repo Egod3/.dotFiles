@@ -20,8 +20,8 @@ rust_check_clean(){
     echo "Error running cargo fmt --check, bailing"
     return;
   fi
-  echo "cargo clippy"
-  cargo clippy
+  echo "cargo clippy --verbose -- -D warnings"
+  cargo clippy --verbose -- -D warnings
   if [[ $? != 0 ]]; then
     echo "Error running cargo clippy, bailing"
     return;
@@ -47,8 +47,8 @@ rust_check(){
     echo "Error running cargo fmt --check, bailing"
     return;
   fi
-  echo "cargo clippy"
-  cargo clippy
+  echo "cargo clippy --verbose -- -D warnings"
+  cargo clippy --verbose -- -D warnings
   if [[ $? != 0 ]]; then
     echo "Error running cargo clippy, bailing"
     return;
@@ -118,6 +118,25 @@ color_test(){
   echo
 }
 
+git_dev_stats()
+{
+  git shortlog -sn
+}
+
+git_dev_stats_this_year()
+{
+  git shortlog -sn --after=$(date -I) --after=01-01-$(date +"%Y")
+}
+
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    alias dir='dir --color=auto'
+    alias vdir='vdir --color=auto'
+    alias grep='rg '
+fi
+
 ###############################################
 ####                ALIASES                ####
 ###############################################
@@ -126,6 +145,8 @@ alias color_test='color_test'
 
 alias setup_west='source /workspace/fli-scalar/fli-scalar_0/.venv/bin/activate'
 alias setup_zephyr=setup_west
+
+alias bash_update='source ~/.bashrc'
 
 alias psn='ps_n'
 

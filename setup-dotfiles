@@ -29,15 +29,15 @@ set_dot_files(){
         if [[ $i == ".bashrc" ]]; then
           if [[ ! -L "$HOME/.bashrc" ]]; then
             if [[ -f "$HOME/.bashrc" ]]; then
-              mv "$HOME/.bashrc" "$HOME/.bashrc.bak"
               echo "mv $HOME/.bashrc $HOME/.bashrc.bak"
+              mv "$HOME/.bashrc" "$HOME/.bashrc.bak"
             fi
-            ln -s $HOME/.dotFiles/$i $HOME/$i
             echo ln -s $HOME/.dotFiles/$i $HOME/$i
+            ln -s $HOME/.dotFiles/$i $HOME/$i
           fi
         elif [[ ! -f $i ]]; then
-          ln -s $HOME/.dotFiles/$i $HOME/$i
           echo ln -s $HOME/.dotFiles/$i $HOME/$i
+          ln -s $HOME/.dotFiles/$i $HOME/$i
         fi
     done
 }
