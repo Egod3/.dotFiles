@@ -41,6 +41,12 @@ rust_check(){
     echo "Error running cargo build -r, bailing"
     return;
   fi
+  echo "cargo build --bins"
+  cargo build --bins
+  if [[ $? != 0 ]]; then
+    echo "Error running cargo build --bins, bailing"
+    return;
+  fi
   echo "cargo fmt --check"
   cargo fmt --check
   if [[ $? != 0 ]]; then
