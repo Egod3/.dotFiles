@@ -69,6 +69,9 @@ vim.api.nvim_set_keymap(
 
 -- Allow nerdtree to show files like .bashrc in nerdtree
 vim.g.NERDTreeShowHidden=1
+-- Set the default window width to be 50 wide for nerdtree
+vim.g.NERDTreeWinSize=50
+
 
 -- On any write to a buffer strip trailing whitespace and
 -- keep the cursor in it's original position.
