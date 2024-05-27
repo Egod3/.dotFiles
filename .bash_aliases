@@ -171,6 +171,7 @@ if [ "$HOSTNAME" = "eg-linux" ] && [ "$username" = "eg" ]; then
   alias nqma_cp='/workspace/tools/fli-utils/scripts/nqma_deploy.sh'
   alias find_nqma='sudo nmap -sn 172.16.1.0/24 | grep nqma'
 fi
+alias fts='find /mnt/NAS/video/  -iname *.ts'
 
 alias start_tmux='~/start-tmux.sh'
 alias vim='/usr/bin/nvim'
@@ -179,7 +180,7 @@ alias grep='rg '
 ### To ignore all .gitignore .rgignore and other ignore files use --no-ignore
 alias gni='rg --no-ignore'
 ### To search for files of a specific type, like *.h, try this:
-alias gtype='rg -t h'
+alias gheader='rg -t h'
 alias vim='/usr/local/bin/nvim'
 
 # enable color support of ls and also add handy aliases
