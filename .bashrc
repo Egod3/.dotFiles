@@ -91,12 +91,6 @@ fi
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-## Add Matt's devtools scripts to the path:
-PATH="$PATH:$HOME/bin/devtools"
-
-## Add default go app install to path
-PATH="$PATH:$HOME/go/bin"
-
 if [[ -f $HOME/.bash_aliases ]]; then
     source $HOME/.bash_aliases
 fi
@@ -122,7 +116,9 @@ fi
 # Update path to add these packages to the PATH variable, installed as part of this command:
 #   pip3 install --upgrade tockloader --user # Installing collected packages: tqdm, pytoml, pyserial, crcmod, argcomplete, tockloader
 # This is also needed for some python libs, so making it generic for all machines.
-PATH="$PATH:$HOME/.local/bin"
+if [ -d $HOME/.local/bin ]; then
+    PATH="$PATH:$HOME/.local/bin"
+fi
 
 username=$(whoami)
 # Only override the ZEPHYR_TOOLCHAIN_VARIANT install location if on my personal host
@@ -130,19 +126,30 @@ if [ "$HOSTNAME" = "ezra-lnx" ] && [ "$username" == "ezra" ]; then
     export ZEPHYR_TOOLCHAIN_VARIANT=/mnt/NAS/data/git/rust_embd/oses/zephyr-sdk-0.16.1
 fi
 
-# Only source ~/.work_conf if on my work host
 if [ "$HOSTNAME" = "eg-linux" ] && [ "$username" = "eg" ]; then
+    # Only source ~/.work_conf if on my work host
     if [ -f ~/.work_conf ]; then
         source ~/.work_conf
     fi
+    ## Add Matt's devtools scripts to the path:
+    if [ -d $HOME/bin/devtools ]; then
+        PATH="$PATH:$HOME/bin/devtools"
+    fi
+    ## Add default go app install to path
+    if [ -d $HOME/go/bin ]; then
+        PATH="$PATH:$HOME/go/bin"
+    fi
+    # Source bash functions
+    if [ -f $HOME/.fli_funcs ]; then
+        source $HOME/.fli_funcs
+    fi
+    # Add Intel Quartus Prime bin folder to path
+    if [ -d $HOME/intelFPGA_pro/21.2/qprogrammer/quartus/bin ]; then
+        PATH="$PATH:$HOME/intelFPGA_pro/21.2/qprogrammer/quartus/bin"
+    fi
+    # Add Quantum Leaps (QP state machine framework) bin folder to path
+    if [ -d /workspace/tools/qp/qm/bin ]; then
+        PATH="$PATH:/workspace/tools/qp/qm/bin"
+    fi
 fi
 
-# Source bash functions
-if [[ -f "$HOME/.dotFiles/.fli_funcs" ]]; then
-   source "$HOME/.dotFiles/.fli_funcs"
-fi
-
-# Add Intel Quartus Prime bin folder to path
-if [[ -d "$HOME/intelFPGA_pro/21.2/qprogrammer/quartus/bin" ]]; then
-   PATH="$PATH:$HOME/intelFPGA_pro/21.2/qprogrammer/quartus/bin"
-fi

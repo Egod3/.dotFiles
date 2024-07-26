@@ -149,9 +149,6 @@ fi
 alias update='deb_update'
 alias color_test='color_test'
 
-alias setup_west='source /workspace/fli-scalar/fli-scalar_0/.venv/bin/activate'
-alias setup_zephyr=setup_west
-
 alias bash_update='source ~/.bashrc'
 
 alias psn='ps_n'
@@ -168,7 +165,7 @@ alias gd='git diff'
 alias f='fd -i '
 alias g='rg -i '
 
-alias nqma_cp='/workspace/tools/fli-utils/scripts/nqma_deploy.sh'
+alias nqma_cp='/workspace/fli/fli-utils/scripts/nqma_deploy.sh'
 alias find_nqma='sudo nmap -sn 172.16.1.0/24 | grep nqma'
 
 alias start_tmux='~/start-tmux.sh'
