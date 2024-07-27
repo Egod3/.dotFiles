@@ -112,9 +112,7 @@ username=$(whoami)
 if [ "$HOSTNAME" = "ezra-lnx" ] && [ "$username" = "ezra" ]; then
     unset ZEPHYR_TOOLCHAIN_VARIANT
     export ZEPHYR_SDK_INSTALL_DIR=/mnt/NAS/data/git/rust_embd/oses/zephyr-sdk-0.16.5
-fi
-
-if [ "$HOSTNAME" = "eg-linux" ] && [ "$username" = "eg" ]; then
+elif [ "$HOSTNAME" = "eg-linux" ] && [ "$username" = "eg" ]; then
     # Only source ~/.work_conf if on my work host
     if [ -f ~/.work_conf ]; then
         source ~/.work_conf

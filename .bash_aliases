@@ -170,6 +170,9 @@ username=$(whoami)
 if [ "$HOSTNAME" = "eg-linux" ] && [ "$username" = "eg" ]; then
   alias nqma_cp='/workspace/tools/fli-utils/scripts/nqma_deploy.sh'
   alias find_nqma='sudo nmap -sn 172.16.1.0/24 | grep nqma'
+elif [ "$HOSTNAME" = "ezra-lnx" ] && [ "$username" = "ezra" ]; then
+  alias setup_west="source /mnt/NAS/data/git/rust_embd/oses/zephyrproject/.venv/bin/activate"
+  alias setup_zephyr=setup_west
 fi
 alias fts='find /mnt/NAS/video/  -iname *.ts'
 
