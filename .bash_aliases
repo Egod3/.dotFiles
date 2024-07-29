@@ -159,7 +159,7 @@ alias g='rg -i '
 username=$(whoami)
 # Only add these aliases if on my personal host
 if [ "$HOSTNAME" = "ezra-lnx" ] && [ "$username" = "ezra" ]; then
-  alias setup_west="source /mnt/NAS/data/git/rust_embd/oses/zephyrproject/.venv/bin/activate"
+  alias setup_west="source ~/zephyrproject/.venv/bin/activate"
   alias setup_zephyr=setup_west
 fi
 alias fts='find /mnt/NAS/video/  -iname *.ts'

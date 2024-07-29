@@ -107,11 +107,10 @@ if [ -d $HOME/.local/bin ]; then
 fi
 
 username=$(whoami)
-# Only override the ZEPHYR_TOOLCHAIN_VARIANT install location if on my personal host
-  # source /mnt/NAS/data/git/rust_embd/oses/zephyrproject/.venv/bin/activate
 if [ "$HOSTNAME" = "ezra-lnx" ] && [ "$username" = "ezra" ]; then
     unset ZEPHYR_TOOLCHAIN_VARIANT
-    export ZEPHYR_SDK_INSTALL_DIR=/mnt/NAS/data/git/rust_embd/oses/zephyr-sdk-0.16.5
+    export ZEPHYR_SDK_INSTALL_DIR=~/zephyr-sdk-0.16.8
+    export ZEPHYR_BASE=~/zephyrproject/zephyr
 elif [ "$HOSTNAME" = "eg-linux" ] && [ "$username" = "eg" ]; then
     # Only source $HOME/work_conf if on my work host.
     # $HOME/.work_conf sources $HOME/.bash_aliases_work, if it exists
