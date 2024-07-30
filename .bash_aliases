@@ -134,15 +134,6 @@ git_dev_stats_this_year()
   git shortlog -sn --after=$(date -I) --after=01-01-$(date +"%Y")
 }
 
-# enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    alias dir='dir --color=auto'
-    alias vdir='vdir --color=auto'
-    alias grep='rg '
-fi
-
 ###############################################
 ####                ALIASES                ####
 ###############################################
@@ -154,7 +145,7 @@ alias bash_update='source ~/.bashrc'
 alias psn='ps_n'
 
 alias c=clear
-alias ll='ls -alFh'
+alias ll='ls -AlFh'
 alias la='ls -A'
 alias l='ls -CFh'
 alias psg='ps aux | rg'
@@ -166,11 +157,8 @@ alias f='fd -i '
 alias g='rg -i '
 
 username=$(whoami)
-# Only add these work aliases if on my work host
-if [ "$HOSTNAME" = "eg-linux" ] && [ "$username" = "eg" ]; then
-  alias nqma_cp='/workspace/tools/fli-utils/scripts/nqma_deploy.sh'
-  alias find_nqma='sudo nmap -sn 172.16.1.0/24 | grep nqma'
-elif [ "$HOSTNAME" = "ezra-lnx" ] && [ "$username" = "ezra" ]; then
+# Only add these aliases if on my personal host
+if [ "$HOSTNAME" = "ezra-lnx" ] && [ "$username" = "ezra" ]; then
   alias setup_west="source /mnt/NAS/data/git/rust_embd/oses/zephyrproject/.venv/bin/activate"
   alias setup_zephyr=setup_west
 fi

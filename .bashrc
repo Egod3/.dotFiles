@@ -113,9 +113,10 @@ if [ "$HOSTNAME" = "ezra-lnx" ] && [ "$username" = "ezra" ]; then
     unset ZEPHYR_TOOLCHAIN_VARIANT
     export ZEPHYR_SDK_INSTALL_DIR=/mnt/NAS/data/git/rust_embd/oses/zephyr-sdk-0.16.5
 elif [ "$HOSTNAME" = "eg-linux" ] && [ "$username" = "eg" ]; then
-    # Only source ~/.work_conf if on my work host
-    if [ -f ~/.work_conf ]; then
-        source ~/.work_conf
+    # Only source $HOME/work_conf if on my work host.
+    # $HOME/.work_conf sources $HOME/.bash_aliases_work, if it exists
+    if [ -f $HOME/.work_conf ]; then
+        source $HOME/.work_conf
     fi
     ## Add Matt's devtools scripts to the path:
     if [ -d $HOME/bin/devtools ]; then
