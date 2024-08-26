@@ -3,7 +3,7 @@
 #   git, curl, nvim, bash, python-dev, python3-dev, python3-pip,
 # Other useful apps:
 #   apt install:
-#       htop tmux cargo nfs-common python3-pynvim libssl-dev gdb openocd
+#       htop tmux cargo nfs-common python3-pynvim libssl-dev gdb openocd iftop
 #   cargo install:
 #       cargo-msrv cargo-update cargo-binutils fd-find flip-link hexyl itm
 #       ripgrep cargo-generate cargo-zigbuild
