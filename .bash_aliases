@@ -164,7 +164,7 @@ if [ "$HOSTNAME" = "ezra-lnx" ] && [ "$username" = "ezra" ]; then
 fi
 alias fts='find /mnt/NAS/video/  -iname *.ts'
 
-alias start_tmux='~/start-tmux.sh'
+alias start_tmux='~/.dotFiles/start-tmux.sh'
 alias vim='/usr/bin/nvim'
 alias pgrep='pgrep -l'
 alias grep='rg '
