@@ -19,8 +19,8 @@ shopt -s histappend
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 # Save up to 1000 characeters per command
 HISTSIZE=1000
-# Save up to 200,000 commands in the history
-HISTFILESIZE=2000000
+# Save up to 8,192 commands in the history
+HISTFILESIZE=8192
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
