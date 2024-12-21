@@ -42,11 +42,10 @@ if [ $? != 0 ]
   tmux selectp -t 0
   tmux split-window -v -c                                   ~/git/tcp-serial-redirect
   # 5
-  tmux new-window -n rtic-app -c                            ~/git/rtic-app
-  tmux split-window -h        -c                            ~/git/rtic-app
+  tmux new-window -n rename_media -c                        ~/git/tools/rename_media
+  tmux split-window -h        -c                            ~/git/tools/rename_media
   tmux selectp -t 0
-  tmux split-window -v        -c                            ~/git/rtic-app
-  tmux split-window -v        -c                            ~/git/rtic-app
+  tmux split-window -v        -c                            ~/git/tools/rename_media
   # 6
   tmux new-window -n mcuboot-rs -c                          ~/git/mcuboot-rs
   tmux split-window -h -c                                   ~/git/mcuboot-rs
