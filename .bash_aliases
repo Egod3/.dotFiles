@@ -161,6 +161,9 @@ username=$(whoami)
 if [ "$HOSTNAME" = "ezra-lnx" ] && [ "$username" = "ezra" ]; then
   alias setup_west="source ~/zephyrproject/.venv/bin/activate"
   alias setup_zephyr=setup_west
+  alias prusaslicer='flatpak run com.prusa3d.PrusaSlicer'
+  alias prusa_slicer=prusaslicer
+  alias prusa-slicer=prusaslicer
 fi
 alias fts='find /mnt/NAS/video/  -iname *.ts'
 
