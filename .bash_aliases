@@ -134,6 +134,15 @@ git_dev_stats_this_year()
   git shortlog -sn --after=$(date -I) --after=01-01-$(date +"%Y")
 }
 
+# Run this in the terminal for hedscan-core to export
+# libhedscan to be used with hedscan-gui
+libhedscan_core_export_lib()
+{
+  LD_LIBRARY_PATH=/workspace/flm/HEDscan/hedscan-core/build-jammy
+  export LD_LIBRARY_PATH
+  echo "LD_LIBRARY_PATH set to $LD_LIBRARY_PATH"
+}
+
 ###############################################
 ####                ALIASES                ####
 ###############################################
