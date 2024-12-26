@@ -21,8 +21,8 @@ HEDSCAN_ROOT=$FLM_ROOT/hedscan
 
 if [ $ret -eq 1 ]; then
   # 0
-  tmux -2 new -s $SESSION_NAME -n dotFiles -d      -c ~/.dotFiles
-  tmux split-window -h                             -c ~/.dotFiles
+  tmux -2 new -s $SESSION_NAME -n dotFiles -d        -c ~/.dotFiles
+  tmux split-window -h                               -c ~/.dotFiles
   if [[ "$SESSION_NAME" == "fli" ]]; then
     # 1
     tmux new-window -n notes                         -c /workspace/notes
@@ -73,7 +73,7 @@ if [ $ret -eq 1 ]; then
     # 10
     # run: setup_scalar_gui to setup python virtual env
     # to launch the GUI run: DISPLAY=:0.0 python app/app.py &
-    tmux new-window -n scalar-gui                    -c $NQMA_ROOT/scalar-gui
+    tmux new-window -n 'FLI Recorder'                -c $NQMA_ROOT/scalar-gui
     tmux split-window -h                             -c $NQMA_ROOT/scalar-gui
   elif [[ "$SESSION_NAME" == "flm" ]]; then
     # 1
@@ -111,17 +111,22 @@ if [ $ret -eq 1 ]; then
     tmux selectp -t 0
     tmux split-window -v                             -c $HEDSCAN_ROOT/hedscan-server
     # 8
-    tmux new-window -n hedscan-xh                    -c $HEDSCAN_ROOT/hedscan-server
-    tmux split-window -h                             -c $HEDSCAN_ROOT/hedscan-server
-    tmux split-window -v                             -c $HEDSCAN_ROOT/hedscan-server
+    # tmux new-window -n hedscan-xh                    -c $HEDSCAN_ROOT/hedscan-server
+    # tmux split-window -h                             -c $HEDSCAN_ROOT/hedscan-server
+    # tmux split-window -v                             -c $HEDSCAN_ROOT/hedscan-server
+    # tmux selectp -t 0
+    # tmux split-window -v                             -c $HEDSCAN_ROOT/hedscan-server
+    # 8
+    tmux new-window -n hedscan-fw-bin                -c $HEDSCAN_ROOT/hedscan-firmware-bin
+    tmux split-window -h                             -c $HEDSCAN_ROOT/hedscan-firmware-bin
+    #
+    tmux new-window -n   hedscan-db                  -c $HEDSCAN_ROOT/hedscan-db
+    tmux split-window -h                             -c $HEDSCAN_ROOT/hedscan-db
     tmux selectp -t 0
-    tmux split-window -v                             -c $HEDSCAN_ROOT/hedscan-server
-    # 9
-    tmux new-window -n hedscan-fw-bin                 -c $HEDSCAN_ROOT/hedscan-firmware-bin
-    tmux split-window -h                              -c $HEDSCAN_ROOT/hedscan-firmware-bin
+    tmux split-window -v                             -c $HEDSCAN_ROOT/hedscan-db
     # 10
-    tmux new-window -n fl-server                      -c $HEDSCAN_ROOT
-    tmux split-window -h                              -c $HEDSCAN_ROOT
+    tmux new-window -n fl-server                     -c $HEDSCAN_ROOT
+    tmux split-window -h                             -c $HEDSCAN_ROOT
   else
     echo "unknown session name ($SESSION_NAME), nothing to do"
     exit 0
