@@ -605,3 +605,13 @@ cmp.setup {
 
 -- Set the default vim colorscheme to dichromatic
 vim.cmd("colorscheme dichromatic")
+
+-- updates to LSP highlighting
+vim.cmd("hi link @lsp.type.macro DefinedName")
+vim.cmd("hi link @lsp.type.label Label")
+vim.cmd("hi link @lsp.type.enum.cpp EnumerationName")
+vim.cmd("hi link @lsp.type.enumMember EnumerationValue")
+vim.cmd("hi link @lsp.mod.readonly Constant")
+vim.cmd("hi link @lsp.typemod.variable.functionScope LocalVariable")
+vim.cmd("hi link @lsp.typemod.variable.globalScope GlobalVariable")
+vim.cmd("hi link @lsp.typemod.enumMember.globalScope EnumerationValue")

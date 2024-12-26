@@ -78,6 +78,9 @@ export GIT_EDITOR=nvim
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
+# Have make/cmake always generate compile_commands.json
+export CMAKE_EXPORT_COMPILE_COMMANDS=1
+
 if [[ -f $HOME/.bash_aliases ]]; then
     source $HOME/.bash_aliases
 fi
