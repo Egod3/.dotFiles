@@ -140,5 +140,7 @@ elif [ "$HOSTNAME" = "eg-linux" ] && [ "$username" = "eg" ]; then
     if [ -d /workspace/tools/qp/qm/bin ]; then
         PATH="$PATH:/workspace/tools/qp/qm/bin"
     fi
+    # Export the NQMA data cache environment var so we cached to fl-server
+    export NQMA_CACHE_DIR=/smb/shared/FLIndustries/NQMA/data_cache
 fi
 
