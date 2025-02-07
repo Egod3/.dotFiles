@@ -164,6 +164,7 @@ alias gb='git branch -vva'
 alias gd='git diff'
 alias f='fd -i '
 alias g='rg -i '
+alias gg='git grep '
 
 username=$(whoami)
 # Only add these aliases if on my personal host
