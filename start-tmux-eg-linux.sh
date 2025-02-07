@@ -75,6 +75,9 @@ if [ $ret -eq 1 ]; then
     # to launch the GUI run: DISPLAY=:0.0 python app/app.py &
     tmux new-window -n 'FLI Recorder'                -c $NQMA_ROOT/scalar-gui
     tmux split-window -h                             -c $NQMA_ROOT/scalar-gui
+    # 11
+    tmux new-window -n 'logs'                        -c /workspace/logs
+    tmux split-window -h                             -c /workspace/logs
   elif [[ "$SESSION_NAME" == "flm" ]]; then
     # 1
     ### Remember to run this command in the below windows - $ setup_west_ptc ###
@@ -97,34 +100,23 @@ if [ $ret -eq 1 ]; then
     tmux selectp -t 0
     tmux split-window -v                             -c $HEDSCAN_ROOT/hedscan-docker-server
     # 5
-    tmux new-window -n hs-core                       -c $HEDSCAN_ROOT/hedscan-core
-    tmux split-window -h                             -c $HEDSCAN_ROOT/hedscan-core
-    tmux selectp -t 0
-    tmux split-window -v                             -c $HEDSCAN_ROOT/hedscan-docker-core
-    # 6
-    tmux new-window -n hs-docker-srv                 -c $HEDSCAN_ROOT/hedscan-docker-server
-    tmux split-window -h                             -c $HEDSCAN_ROOT/hedscan-docker-server
-    # 7
     tmux new-window -n hedscan-mliss                 -c $HEDSCAN_ROOT/hedscan-server
     tmux split-window -h                             -c $HEDSCAN_ROOT/hedscan-server
     tmux split-window -v                             -c $HEDSCAN_ROOT/hedscan-server
     tmux selectp -t 0
     tmux split-window -v                             -c $HEDSCAN_ROOT/hedscan-server
-    # 8
-    # tmux new-window -n hedscan-xh                    -c $HEDSCAN_ROOT/hedscan-server
-    # tmux split-window -h                             -c $HEDSCAN_ROOT/hedscan-server
-    # tmux split-window -v                             -c $HEDSCAN_ROOT/hedscan-server
-    # tmux selectp -t 0
-    # tmux split-window -v                             -c $HEDSCAN_ROOT/hedscan-server
-    # 8
+    # 6
+    tmux new-window -n hs-provision                  -c ~/HEDscan/recordings/
+    tmux split-window -h                             -c ~/HEDscan/recordings/
+    # 7
     tmux new-window -n hedscan-fw-bin                -c $HEDSCAN_ROOT/hedscan-firmware-bin
     tmux split-window -h                             -c $HEDSCAN_ROOT/hedscan-firmware-bin
-    #
+    # 8
     tmux new-window -n   hedscan-db                  -c $HEDSCAN_ROOT/hedscan-db
     tmux split-window -h                             -c $HEDSCAN_ROOT/hedscan-db
     tmux selectp -t 0
     tmux split-window -v                             -c $HEDSCAN_ROOT/hedscan-db
-    # 10
+    # 9
     tmux new-window -n fl-server                     -c $HEDSCAN_ROOT
     tmux split-window -h                             -c $HEDSCAN_ROOT
   else
