@@ -45,39 +45,39 @@ if [ $ret -eq 1 ]; then
     tmux split-window -h                             -c $NQMA_ROOT/fli-utils
     tmux selectp -t 0
     tmux split-window -v                             -c $NQMA_ROOT/fli-utils
+    # # 5
+    # tmux new-window -n   nqma-node-service           -c /workspace/rust/nqma-node-service
+    # tmux split-window -h                             -c /workspace/rust/nqma-node-service
+    # tmux selectp -t 0
+    # tmux split-window -v                             -c /workspace/rust/nqma-node-service
     # 5
-    tmux new-window -n   nqma-node-service           -c /workspace/rust/nqma-node-service
-    tmux split-window -h                             -c /workspace/rust/nqma-node-service
-    tmux selectp -t 0
-    tmux split-window -v                             -c /workspace/rust/nqma-node-service
-    # 6
     tmux new-window -n nqma-fw-bin                   -c $NQMA_ROOT/fli-nqma-firmware-bin
     tmux split-window -h                             -c $NQMA_ROOT/fli-nqma-firmware-bin
-    # 7
+    # 6
     tmux new-window -n nqma-provision                -c $NQMA_ROOT/fli-utils/scripts
     tmux split-window -h                             -c $NQMA_ROOT/fli-utils/scripts
-    # 8
-    #   - nqma-sbc-851c44, New SBC on my desktop
-    tmux new-window -n nqma-sbc-851c44               -c ~/
-    tmux split-window -h                             -c ~/
-    tmux split-window -v                             -c ~/
-    tmux selectp -t 0
-    tmux split-window -v                             -c ~/
-    # 9
+    # 7
     #   - nqma-sbc-base, base-station
     tmux new-window -n nqma-sbc-base                 -c ~/
     tmux split-window -h                             -c ~/
     tmux split-window -v                             -c ~/
     tmux selectp -t 0
     tmux split-window -v                             -c ~/
-    # 10
+    # 8
     # run: setup_scalar_gui to setup python virtual env
     # to launch the GUI run: DISPLAY=:0.0 python app/app.py &
     tmux new-window -n 'FLI Recorder'                -c $NQMA_ROOT/scalar-gui
     tmux split-window -h                             -c $NQMA_ROOT/scalar-gui
-    # 11
-    tmux new-window -n 'logs'                        -c /workspace/logs
-    tmux split-window -h                             -c /workspace/logs
+    # 9
+    #   fli-utils-auto - for automated fli-utils running of nqma_pfn_simple_loop.sh/py scripts
+    tmux new-window -n nqma-sbc-851c44               -c $NQMA_ROOT/fli-utils-auto
+    tmux split-window -h                             -c $NQMA_ROOT/fli-utils-auto
+    tmux split-window -v                             -c $NQMA_ROOT/fli-utils-auto
+    tmux selectp -t 0
+    tmux split-window -v                             -c $NQMA_ROOT/fli-utils-auto
+    # 10
+    tmux new-window -n 'logs'                        -c /workspace/logs/nqma
+    tmux split-window -h                             -c /workspace/logs/nqma
   elif [[ "$SESSION_NAME" == "flm" ]]; then
     # 1
     ### Remember to run this command in the below windows - $ setup_west_ptc ###
