@@ -70,7 +70,7 @@ if [ $ret -eq 1 ]; then
     tmux split-window -h                             -c $NQMA_ROOT/scalar-gui
     # 9
     #   fli-utils-auto - for automated fli-utils running of nqma_pfn_simple_loop.sh/py scripts
-    tmux new-window -n nqma-sbc-851c44               -c $NQMA_ROOT/fli-utils-auto
+    tmux new-window -n fli-utils-auto                -c $NQMA_ROOT/fli-utils-auto
     tmux split-window -h                             -c $NQMA_ROOT/fli-utils-auto
     tmux split-window -v                             -c $NQMA_ROOT/fli-utils-auto
     tmux selectp -t 0
