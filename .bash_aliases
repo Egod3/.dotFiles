@@ -47,10 +47,10 @@ rust_check(){
     echo "Error running cargo build --bins, bailing"
     return;
   fi
-  echo "cargo fmt --check"
-  cargo fmt --check
+  echo "cargo fmt"
+  cargo fmt
   if [[ $? != 0 ]]; then
-    echo "Error running cargo fmt --check, bailing"
+    echo "Error running cargo fmt, bailing"
     return;
   fi
   echo "cargo clippy --verbose -- -D warnings"
@@ -59,31 +59,38 @@ rust_check(){
     echo "Error running cargo clippy, bailing"
     return;
   fi
+  echo "cargo rustdoc"
+  cargo rustdoc
+  if [[ $? != 0 ]]; then
+    echo "Error running cargo rustdoc, bailing"
+    return;
+  fi
   echo "cargo doc"
   cargo doc
   if [[ $? != 0 ]]; then
     echo "Error running cargo doc, bailing"
     return;
   fi
-}
-
-rust_check_all(){
-  rust_check
-  echo "cargo msrv"
-  cargo msrv
+  echo "cargo msrv verify"
+  cargo msrv verify
   if [[ $? != 0 ]]; then
     echo "Error running cargo msrv, bailing"
     return;
   fi
-  #echo "cargo test -- --show-output"
-  #cargo test -- --show-output
-  #if [[ $? != 0 ]]; then
-  #  echo "Error running cargo test -- --show-output, bailing"
-  #  return;
-  #fi
+  echo "cargo test -- --show-output"
+  cargo test -- --show-output
+  if [[ $? != 0 ]]; then
+    echo "Error running cargo test -- --show-output, bailing"
+    return;
+  fi
+  echo "cargo test"
+  cargo test
+  if [[ $? != 0 ]]; then
+    echo "Error running cargo test, bailing"
+    return;
+  fi
 }
 
-alias cargo_check_all=rust_check_all
 alias cargo_check=rust_check
 alias cargo_check_clean=rust_check_clean
 
@@ -97,6 +104,7 @@ deb_update(){
     echo "sudo snap refresh"
     echo "rustup update"
     echo "cargo install-update -a"
+    echo "flatpak update com.prusa3d.PrusaSlicer"
     echo "sudo apt update"
     echo "sudo apt upgrade -y"
     echo "sudo apt autoremove -y"
@@ -107,6 +115,7 @@ deb_update(){
     sudo snap refresh
     rustup update
     cargo install-update -a
+    flatpak update com.prusa3d.PrusaSlicer
     sudo apt update
     sudo apt upgrade -y
     sudo apt autoremove -y
