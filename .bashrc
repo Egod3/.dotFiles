@@ -140,7 +140,16 @@ elif [ "$HOSTNAME" = "eg-linux" ] && [ "$username" = "eg" ]; then
     if [ -d /workspace/tools/qp/qm/bin ]; then
         PATH="$PATH:/workspace/tools/qp/qm/bin"
     fi
+    # Add Quantum Leaps (Tools dir) folder to path
+    if [ -d /workspace/tools/qp/qtools/bin ]; then
+        PATH="$PATH:/workspace/tools/qp/qtools/bin"
+    fi
     # Export the NQMA data cache environment var so we cached to fl-server
     export NQMA_CACHE_DIR=/smb/shared/FLIndustries/NQMA/data_cache
+    # Export the Quantum Leaps tools directory
+    export QTOOLS=/workspace/tools/qp/qtools
+
+    # Export the path to a mariadb/mysql.auth file so the HEDscan-python database can find the db permissions
+    export MARIADB_AUTH=/home/eg/mysql.hedscan-web.auth
 fi
 
