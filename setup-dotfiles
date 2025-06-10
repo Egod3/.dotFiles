@@ -16,7 +16,7 @@
 #       discord
 
 # Global list of config files to symlink
-dot_files=('.bashrc' '.bash_aliases' '.git-prompt.sh' '.config/nvim/init.lua' '.tmux.conf' '.gdbinit' '.config/pycodestyle' '.telnetrc')
+dot_files=('.bashrc' '.bash_aliases' '.git-prompt.sh' '.config/nvim/init.lua' '.tmux.conf' '.gdbinit' '.config/pycodestyle' '.telnetrc' '.ruff.toml')
 
 set_dot_files(){
     # Check if the nvim config path exists if it does not create it

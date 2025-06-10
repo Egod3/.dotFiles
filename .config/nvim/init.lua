@@ -478,7 +478,7 @@ local servers = {
   -- clangd = {},
   -- gopls = {},
   -- pyright = {},
-  -- rust_analyzer = {},
+  rust_analyzer = {},
   -- tsserver = {},
 
     lua_ls = {
@@ -511,15 +511,15 @@ mason_lspconfig.setup {
   ensure_installed = vim.tbl_keys(servers),
 }
 
-mason_lspconfig.setup_handlers {
-  function(server_name)
-    require('lspconfig')[server_name].setup {
-      capabilities = capabilities,
-      on_attach = on_attach,
-      settings = servers[server_name],
-    }
-  end,
-}
+-- mason_lspconfig.setup_handlers {
+--   function(server_name)
+--     require('lspconfig')[server_name].setup {
+--       capabilities = capabilities,
+--       on_attach = on_attach,
+--       settings = servers[server_name],
+--     }
+--   end,
+-- }
 
 vim.lsp.config('ruff', {
   init_options = {
@@ -546,3 +546,24 @@ vim.cmd("hi link @lsp.mod.readonly Constant")
 vim.cmd("hi link @lsp.typemod.variable.functionScope LocalVariable")
 vim.cmd("hi link @lsp.typemod.variable.globalScope GlobalVariable")
 vim.cmd("hi link @lsp.typemod.enumMember.globalScope EnumerationValue")
+
+-- Setup ruff a very fast Python linter written in Rust
+vim.lsp.config("ruff", {
+  init_options = {
+    settings = {
+      -- Ruff language server settings go here
+      enable = true,
+      lineLength = 100,
+    }
+  },
+  configuration = {
+    format = {
+      ["quote-style"] = "single"
+    }
+  },
+  diagnostics = {
+    update_in_insert = true,
+  }
+})
+vim.lsp.enable("ruff")
+

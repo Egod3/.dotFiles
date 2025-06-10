@@ -150,6 +150,8 @@ elif [ "$HOSTNAME" = "eg-linux" ] && [ "$username" = "eg" ]; then
     export QTOOLS=/workspace/tools/qp/qtools
 
     # Export the path to a mariadb/mysql.auth file so the HEDscan-python database can find the db permissions
-    export MARIADB_AUTH=/home/eg/mysql.hedscan-web.auth
+    export MARIADB_AUTH_PROD_DB=/home/eg/mysql.hedscan-web.auth
+    export MARIADB_AUTH_DEV_DB=/home/eg/mysql.hedscan-chassis-dev.auth
+    export MARIADB_AUTH=$MARIADB_AUTH_DEV_DB
 fi
 
