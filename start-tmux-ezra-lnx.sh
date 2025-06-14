@@ -37,15 +37,15 @@ if [ $? != 0 ]
   tmux selectp -t 0
   tmux split-window -v -c                                   ~/git/ws-app
   # 4
-  tmux new-window -n tcp-serial-redir -c                    ~/git/tcp-serial-redirect
-  tmux split-window -h -c                                   ~/git/tcp-serial-redirect
+  tmux new-window -n hexdump -c                             ~/git/tools/hd
+  tmux split-window -h -c                                   ~/git/tools/hd
   tmux selectp -t 0
-  tmux split-window -v -c                                   ~/git/tcp-serial-redirect
+  tmux split-window -v -c                                   ~/git/tools/hd
   # 5
-  tmux new-window -n rename_media -c                        ~/git/tools/rename_media
-  tmux split-window -h        -c                            ~/git/tools/rename_media
+  tmux new-window -n loot_table -c                          ~/git/tools/loot_table
+  tmux split-window -h        -c                            ~/git/tools/loot_table
   tmux selectp -t 0
-  tmux split-window -v        -c                            ~/git/tools/rename_media
+  tmux split-window -v        -c                            ~/git/tools/loot_table
   # 6
   tmux new-window -n mcuboot-rs -c                          ~/git/mcuboot-rs
   tmux split-window -h -c                                   ~/git/mcuboot-rs

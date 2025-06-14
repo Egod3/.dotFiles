@@ -42,8 +42,8 @@ function restore_nas_other(){
 # Check the space required and ensure you have enough space
 # before starting the tar's
 function backup_nas_other(){
-  local backup_path="/media/$(whoami)/nas_backup/archive"
-  local backup_log="backup_$(date +'%m_%d_%Y_%H_%M').log"
+  local backup_path="/mmt/backup/archive"
+  local backup_log="$backup_path/backup_$(date +'%m_%d_%Y_%H_%M').log"
   local data_path="/mnt/nas/data"
   local music_path="/mnt/nas/music"
   local photo_path="/mnt/nas/photo"
@@ -51,21 +51,21 @@ function backup_nas_other(){
     mkdir -p $backup_path/$(date +'%Y')
     if [ -d $data_path ]; then
       echo "Backing up the $data_path folder with tar" 2>&1 | tee $backup_log
-      time tar -czf $backup_path/$(date +'%Y')/data_$(date +'%m_%d_%Y_%H_%M').tar.gz $data_path 2>&1 | tee -a $backup_log
+      time tar -czfv $backup_path/$(date +'%Y')/data_$(date +'%m_%d_%Y_%H_%M').tar.gz $data_path 2>&1 | tee -a $backup_log
     else
       echo "$data_path not found"
     fi
 
     if [ -d $music_path ]; then
       echo "Backing up the $music_path folder with tar" 2>&1 | tee -a $backup_log
-      time tar -czf $backup_path/$(date +'%Y')/music_09.29.2024.tar.gz $music_path 2>&1 | tee -a $backup_log
+      time tar -czfv $backup_path/$(date +'%Y')/music_09.29.2024.tar.gz $music_path 2>&1 | tee -a $backup_log
     else
       echo "$music_path not found"
     fi
 
     if [ -d $photo_path ]; then
       echo "Backing up the $photo_path folder with tar" 2>&1 | tee -a $backup_log
-      time tar -czf $backup_path/$(date +'%Y')/photo_$(date +'%m_%d_%Y_%H_%M').tar.gz $photo_path 2>&1 | tee -a $backup_log
+      time tar -czfv $backup_path/$(date +'%Y')/photo_$(date +'%m_%d_%Y_%H_%M').tar.gz $photo_path 2>&1 | tee -a $backup_log
     else
       echo "$photo_path not found"
     fi
@@ -78,7 +78,7 @@ function backup_nas_other(){
 # before starting the rsync
 function backup_nas_tv(){
   local backup_path="/mnt/backup/tv_shows"
-  local backup_log="tv_shows_$(date +'%m_%d_%Y_%H_%M').log"
+  local backup_log="$backup_path/tv_shows_$(date +'%m_%d_%Y_%H_%M').log"
   local tv_path="/volume1/video/tv_shows"
   echo "tv_path is $tv_path"
   if [ -d $backup_path ]; then
@@ -100,7 +100,7 @@ function backup_nas_tv(){
 # before starting the rsync
 function backup_nas_movies(){
   local backup_path="/mnt/backup/movies"
-  local backup_log="movies_$(date +'%m_%d_%Y_%H_%M').log"
+  local backup_log="$backup_path/movies_$(date +'%m_%d_%Y_%H_%M').log"
   local movie_path="/mnt/backup/movies"
   if [ -d $backup_path ]; then
     if [ -d $movie_path ]; then
@@ -118,7 +118,7 @@ function backup_nas_movies(){
 
 usage() {
   echo "Usage: $0
-         [-d backup data/music/photo (~0.5TB)]
+         [-d backup data/music/photo (~220GB)]
          [-t backup video/tv shows (~5.5TB)]
          [-m backup video/movies (~4.4TB)]" 1>&2;
   exit 1;

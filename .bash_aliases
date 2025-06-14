@@ -104,7 +104,7 @@ deb_update(){
     echo "sudo snap refresh"
     echo "rustup update"
     echo "cargo install-update -a"
-    echo "flatpak update com.prusa3d.PrusaSlicer"
+    echo "flatpak update -y"
     echo "sudo apt update"
     echo "sudo apt upgrade -y"
     echo "sudo apt autoremove -y"
@@ -115,7 +115,7 @@ deb_update(){
     sudo snap refresh
     rustup update
     cargo install-update -a
-    flatpak update com.prusa3d.PrusaSlicer
+    flatpak update -y
     sudo apt update
     sudo apt upgrade -y
     sudo apt autoremove -y
