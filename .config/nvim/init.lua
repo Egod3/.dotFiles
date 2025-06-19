@@ -521,16 +521,6 @@ mason_lspconfig.setup {
 --   end,
 -- }
 
-vim.lsp.config('ruff', {
-  init_options = {
-    settings = {
-      -- Ruff language server settings go here
-    }
-  }
-})
-
-vim.lsp.enable('ruff')
-
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
 
@@ -567,3 +557,10 @@ vim.lsp.config("ruff", {
 })
 vim.lsp.enable("ruff")
 
+-- Create a BufWritePre command to run ruff check on *.py file write
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*.py",
+  callback = function()
+    vim.cmd("!ruff check %")
+  end,
+})
