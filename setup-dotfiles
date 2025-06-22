@@ -3,13 +3,15 @@
 #   git, curl, nvim, bash, python-dev, python3-dev, python3-pip,
 # Other useful apps:
 #   apt install:
-#       tmux cargo nfs-common python3-pynvim gdb openocd barrier iftop nmcli
+#       curl tmux nfs-common python3-pynvim gdb openocd barrier iftop cifs-utils
 #   cargo install:
 #       cargo-msrv cargo-update cargo-binutils fd-find flip-link hexyl itm
 #       ripgrep cargo-generate cargo-zigbuild
 #       probe-rs --features cli
 #   snap install:
-#       blender chromium firefox htop nvim nmap ruff signal steam spotify tio vlc
+#       chromium htop nvim nmap ruff signal-desktop steam spotify vlc
+#   snap install with --classic:
+#       blender tio
 #   flatpak
 #       prusa-slicer
 #   Ubuntu App Store
