@@ -65,11 +65,8 @@ fi
 #
 if [[ -f $HOME/.bash-git-prompt/gitprompt.sh ]]; then
     GIT_PROMPT_ONLY_IN_REPO=1
-    source ~/.bash-git-prompt/gitprompt.sh
-    export GIT_PS1_SHOWDIRTYSTATE=true
-    export GIT_PS1_SHOWUNTRACKEDFILES=true
-    export GIT_PS1_SHOWCOLORHINTS=true
-    export GIT_PROMPT_THEME=Solarized
+    GIT_PROMPT_THEME=Solarized_Ubuntu
+    source $HOME/.bash-git-prompt/gitprompt.sh
     # echo "PS1 before modifying: $PS1"
     export PS1="\[$(tput setaf 2)\]\u@\h:\w\\$ \[$(tput sgr0)\]"
     # echo "PS1 after modifying: $PS1"
@@ -129,8 +126,8 @@ fi
 username=$(whoami)
 if [ "$HOSTNAME" = "ezra-lnx" ] && [ "$username" = "ezra" ]; then
     unset ZEPHYR_TOOLCHAIN_VARIANT
-    export ZEPHYR_SDK_INSTALL_DIR=~/zephyr-sdk-0.16.8
-    export ZEPHYR_BASE=~/zephyrproject/zephyr
+    export ZEPHYR_SDK_INSTALL_DIR=$HOME/zephyr-sdk-0.16.8
+    export ZEPHYR_BASE=$HOME/zephyrproject/zephyr
 elif [ "$HOSTNAME" = "eg-linux" ] && [ "$username" = "eg" ]; then
     # Only source $HOME/work_conf if on my work host.
     # $HOME/.work_conf sources $HOME/.bash_aliases_work, if it exists
