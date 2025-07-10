@@ -557,10 +557,10 @@ vim.lsp.config("ruff", {
 })
 vim.lsp.enable("ruff")
 
--- Create a BufWritePre command to run ruff check on *.py file write
-vim.api.nvim_create_autocmd("BufWritePre", {
-  pattern = "*.py",
-  callback = function()
-    vim.cmd("!ruff check %")
-  end,
-})
+-- -- Create a BufWritePre command to run ruff check on *.py file write
+-- vim.api.nvim_create_autocmd("BufWritePre", {
+--   pattern = "*.py",
+--   callback = function()
+--     vim.cmd("!ruff check %")
+--   end,
+-- })
