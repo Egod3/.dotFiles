@@ -59,10 +59,11 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
-# NEW bash-git-prompt way of doing things:
-# Get the new reop if it isn't already there
-# git clone https://github.com/magicmonty/bash-git-prompt.git ~/.bash-git-prompt --depth=1
-#
+# If the script isn't present, download it
+if [[ ! -f $HOME/.bash-git-prompt/gitprompt.sh ]]; then
+    git clone https://github.com/magicmonty/bash-git-prompt.git $HOME/.bash-git-prompt --depth=1
+fi
+
 if [[ -f $HOME/.bash-git-prompt/gitprompt.sh ]]; then
     GIT_PROMPT_ONLY_IN_REPO=1
     GIT_PROMPT_THEME=Solarized_Ubuntu
@@ -72,15 +73,6 @@ if [[ -f $HOME/.bash-git-prompt/gitprompt.sh ]]; then
     # echo "PS1 after modifying: $PS1"
 fi
 
-# OLD git-prompt.sh way of doing things... very unperformant on some large git repos
-# if [[ -f $HOME/.git-prompt.sh ]]; then
-#   source $HOME/.git-prompt.sh
-#   export GIT_PS1_SHOWDIRTYSTATE=true
-#   export GIT_PS1_SHOWUNTRACKEDFILES=true
-#   export GIT_PS1_SHOWCOLORHINTS=true
-#
-#   export PS1="\[$(tput setaf 2)\]\u@\h:\W\$(__git_ps1)\$ \[$(tput sgr0)\]"
-# fi
 unset color_prompt force_color_prompt
 
 # Export standardized VISUAL and EDITOR env vars
