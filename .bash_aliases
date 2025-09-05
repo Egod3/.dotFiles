@@ -105,6 +105,7 @@ deb_update(){
     echo "rustup update"
     echo "cargo install-update -a"
     echo "flatpak update -y"
+    echo "uv self update"
     echo "sudo apt update"
     echo "sudo apt upgrade -y"
     echo "sudo apt autoremove -y"
@@ -116,6 +117,7 @@ deb_update(){
     rustup update
     cargo install-update -a
     flatpak update -y
+    uv self update
     sudo apt update
     sudo apt upgrade -y
     sudo apt autoremove -y

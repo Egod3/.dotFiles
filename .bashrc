@@ -150,6 +150,10 @@ elif [ "$HOSTNAME" = "eg-linux" ] && [ "$username" = "eg" ]; then
     if [ -d /workspace/tools/qp/qtools/bin ]; then
         PATH="$PATH:/workspace/tools/qp/qtools/bin"
     fi
+
+    # if [ -f /workspace/tools/flm/hedscan/cp_libhedscan.sh ]; then
+    #     source /workspace/tools/flm/hedscan/cp_libhedscan.sh
+    # fi
     # Export the NQMA data cache environment var so we cached to fl-server
     export NQMA_CACHE_DIR=/smb/shared/FLIndustries/NQMA/data_cache
     # Export the Quantum Leaps tools directory
@@ -159,5 +163,8 @@ elif [ "$HOSTNAME" = "eg-linux" ] && [ "$username" = "eg" ]; then
     export MARIADB_AUTH_PROD_DB=/home/eg/mysql.hedscan-web.auth
     export MARIADB_AUTH_DEV_DB=/home/eg/mysql.hedscan-chassis-dev.auth
     export MARIADB_AUTH=$MARIADB_AUTH_DEV_DB
+
+    # TODO: Is this the right sub-path to point to?
+    export QT_STATIC_PATH=/workspace/flm/hedscan/hedscan-docker-qt/output-qt6.6.3-static-jammy/
 fi
 
