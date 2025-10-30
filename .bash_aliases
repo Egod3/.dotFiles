@@ -109,9 +109,9 @@ deb_update(){
     echo "sudo apt update"
     echo "sudo apt upgrade -y"
     echo "sudo apt autoremove -y"
-    # echo "sudo fwupdmgr refresh"
-    # echo "sudo fwupdmgr get-updates"
-    # echo "sudo fwupdmgr update"
+    echo "sudo fwupdmgr refresh"
+    echo "sudo fwupdmgr get-updates"
+    echo "sudo fwupdmgr update"
     echo
     sudo snap refresh
     rustup update
@@ -121,9 +121,9 @@ deb_update(){
     sudo apt update
     sudo apt upgrade -y
     sudo apt autoremove -y
-    # sudo fwupdmgr refresh
-    # sudo fwupdmgr get-updates
-    # sudo fwupdmgr update
+    sudo fwupdmgr refresh
+    sudo fwupdmgr get-updates
+    sudo fwupdmgr update
 }
 
 color_test(){
