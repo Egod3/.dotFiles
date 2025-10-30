@@ -493,14 +493,16 @@ local servers = {
 require('neodev').setup()
 
 -- Ensure the servers above are installed
-local mason_lspconfig = require 'mason-lspconfig'
-
-mason_lspconfig.setup {
-  ensure_installed = vim.tbl_keys(servers),
-  require("lspconfig").pylsp.setup({
-    on_attach = on_attach,
-  })
-}
+-- local mason_lspconfig = require 'mason-lspconfig'
+-- local mason_lspconfig = vim.lsp.config("mason_lspconfig")
+--
+-- mason_lspconfig.setup {
+--   ensure_installed = vim.tbl_keys(servers),
+--   vim.lsp.config("lspconfig").setup({
+--     on_attach = on_attach,
+--   })
+-- }
+-- vim.lsp.enable('mason_lspconfig')
 
 vim.lsp.config('ruff', {
   init_options = {
@@ -556,3 +558,10 @@ vim.lsp.enable("ruff")
 --   end,
 -- })
 --
+
+-- Associate the .geo extension with "json" filetype as it is JSON.
+vim.filetype.add({
+  extension = {
+    geo = "json",
+  }
+})
