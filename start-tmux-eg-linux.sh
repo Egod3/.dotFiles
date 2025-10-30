@@ -159,11 +159,11 @@ if [ $ret -eq 1 ]; then
     tmux selectp -t 0
     tmux split-window -v                       -c $HEDSCAN_ROOT/hedscan-server
     # 11
-    tmux new-window -n fl-server               -c $HEDSCAN_ROOT
-    tmux split-window -h                       -c $HEDSCAN_ROOT
-    # 12
     tmux new-window -n hs-fw-bin               -c $HEDSCAN_ROOT/hedscan-firmware-bin
     tmux split-window -h                       -c $HEDSCAN_ROOT/hedscan-firmware-bin
+    # 12
+    tmux new-window -n fl-server               -c $HEDSCAN_ROOT
+    tmux split-window -h                       -c $HEDSCAN_ROOT
   else
     echo "unknown session name ($SESSION_NAME), nothing to do"
     popd
