@@ -6,12 +6,12 @@
 #       curl tmux nfs-common python3-pynvim gdb openocd barrier iftop cifs-utils
 #   cargo install:
 #       cargo-msrv cargo-update cargo-binutils fd-find flip-link hexyl itm
-#       ripgrep cargo-generate cargo-zigbuild
+#       ripgrep cargo-generate cargo-zigbuild uv ruff
 #       probe-rs --features cli
 #   snap install:
-#       chromium htop nvim nmap ruff signal-desktop steam spotify vlc
+#       chromium htop nmap signal-desktop steam vlc
 #   snap install with --classic:
-#       blender tio
+#       blender nvim tio
 #   flatpak
 #       prusa-slicer
 #   Ubuntu App Store
