@@ -168,3 +168,6 @@ elif [ "$HOSTNAME" = "eg-linux" ] && [ "$username" = "eg" ]; then
     export QT_STATIC_PATH=/workspace/flm/hedscan/hedscan-docker-qt/output-qt6.6.3-static-jammy/
 fi
 
+
+# uv
+export PATH="/home/ezra/.local/bin:$PATH"
