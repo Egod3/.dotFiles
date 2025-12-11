@@ -122,10 +122,13 @@ if [ $ret -eq 1 ]; then
     tmux send-keys -t flm:5.1 "source ~/.venv/bin/activate" C-m
     tmux send-keys -t flm:5.2 "source ~/.venv/bin/activate" C-m
     # 6
-    tmux new-window -n  hs-core                -c $HEDSCAN_ROOT/hedscan-core
-    tmux split-window -h                       -c $HEDSCAN_ROOT/hedscan-core
+    tmux new-window -n  hs-sensor-tune         -c $HEDSCAN_ROOT/hedscan-sensor-tune
+    tmux split-window -h                       -c $HEDSCAN_ROOT/hedscan-sensor-tune
     tmux selectp -t 0
-    tmux split-window -v                       -c $HEDSCAN_ROOT/hedscan-docker-core
+    tmux split-window -v                       -c $HEDSCAN_ROOT/hedscan-sensor-tune
+    tmux send-keys -t flm:6.0 "source ~/.venv/bin/activate" C-m
+    tmux send-keys -t flm:6.1 "source ~/.venv/bin/activate" C-m
+    tmux send-keys -t flm:6.2 "source ~/.venv/bin/activate" C-m
     # # 7
     # tmux new-window -n hs-gui                  -c $HEDSCAN_ROOT/hedscan-gui
     # tmux split-window -h                       -c $HEDSCAN_ROOT/hedscan-gui
