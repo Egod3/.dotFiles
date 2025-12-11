@@ -61,7 +61,7 @@ fi
 
 # If the script isn't present, download it
 if [[ ! -f $HOME/.bash-git-prompt/gitprompt.sh ]]; then
-    git clone https://github.com/magicmonty/bash-git-prompt.git $HOME/.bash-git-prompt --depth=1
+    git clone https://github.com/magicmonty/bash-git-prompt.git $HOME/.bash-git-prompt
 fi
 
 if [[ -f $HOME/.bash-git-prompt/gitprompt.sh ]]; then
