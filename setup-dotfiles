@@ -11,7 +11,7 @@
 #   snap install:
 #       chromium htop nmap signal-desktop steam vlc
 #   snap install with --classic:
-#       blender nvim tio
+#       blender nvim tio astral-uv rustup
 #   flatpak
 #       prusa-slicer
 #   Ubuntu App Store
