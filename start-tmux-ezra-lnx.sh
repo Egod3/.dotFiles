@@ -34,10 +34,10 @@ if [ $? != 0 ]
   tmux selectp -t 0
   tmux split-window -v -c                                   ~/git/tools/hd
   # 4
-  tmux new-window -n loot_table -c                          ~/git/tools/loot_table
-  tmux split-window -h        -c                            ~/git/tools/loot_table
+  tmux new-window -n char-sheet -c                          ~/git/tools/char-sheet
+  tmux split-window -h        -c                            ~/git/tools/char-sheet
   tmux selectp -t 0
-  tmux split-window -v        -c                            ~/git/tools/loot_table
+  tmux split-window -v        -c                            ~/git/tools/char-sheet
   # 5
   tmux new-window -n mcuboot-rs -c                          ~/git/mcuboot-rs
   tmux split-window -h -c                                   ~/git/mcuboot-rs
