@@ -111,6 +111,9 @@ require('lazy').setup({
   -- rust-lang/rust.vim plugin
   'rust-lang/rust.vim',
 
+  -- Rustaceanvim - easy setup of rust-analyzer in neovim!
+  'mrcjkb/rustaceanvim',
+
   -- Git related plugins
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
