@@ -108,130 +108,118 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
   -- NOTE: First, some plugins that don't require any configuration
 
-  -- rust-lang/rust.vim plugin
-  'rust-lang/rust.vim',
+  spec = {
+      { import = "plugins" },
 
-  -- Rustaceanvim - easy setup of rust-analyzer in neovim!
-  'mrcjkb/rustaceanvim',
+      -- Rustaceanvim - easy setup of rust-analyzer in neovim!
+      'mrcjkb/rustaceanvim',
 
-  -- Git related plugins
-  'tpope/vim-fugitive',
-  'tpope/vim-rhubarb',
+      -- Git related plugins
+      'tpope/vim-fugitive',
+      'tpope/vim-rhubarb',
 
-  -- Detect tabstop and shiftwidth automatically
-  'tpope/vim-sleuth',
+      -- rust-lang/rust.vim plugin
+      'rust-lang/rust.vim',
 
-  -- Install NerdTree
-  'preservim/nerdtree',
+      -- Git related plugins
+      'tpope/vim-fugitive',
+      'tpope/vim-rhubarb',
 
-  -- Install vim-bitbake plugin
-  'kergoth/vim-bitbake',
+      -- Detect tabstop and shiftwidth automatically
+      'tpope/vim-sleuth',
 
-  -- Install mason
-  'mason-org/mason.nvim',
+      -- Install NerdTree
+      'preservim/nerdtree',
 
-  -- NOTE: This is where your plugins related to LSP can be installed.
-  --  The configuration is done below. Search for lspconfig to find it below.
-  {
-    -- LSP Configuration & Plugins
-    'neovim/nvim-lspconfig',
-    dependencies = {
-      -- Automatically install LSPs to stdpath for neovim
-      { 'mason-org/mason.nvim', config = true },
-      'mason-org/mason-lspconfig.nvim',
+      -- Install vim-bitbake plugin
+      'kergoth/vim-bitbake',
 
-    opts = {
-      inlay_hints = { enabled = true },
-    },
-      -- Useful status updates for LSP
-      -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { 'j-hui/fidget.nvim', tag = 'legacy', opts = {}, },
+      -- Install mason
+      'mason-org/mason.nvim',
 
-      -- Additional lua configuration, makes nvim stuff amazing!
-      'folke/neodev.nvim',
-    },
-  },
-
-  {
-    -- vim-dichromatic
-    'romainl/vim-dichromatic',
-  },
-
-  {
-    -- Theme inspired by Atom
-    'navarasu/onedark.nvim',
-    priority = 1000,
-    config = function()
-      vim.cmd.colorscheme 'dichromatic'
-    end,
-  },
-
-  {
-    -- Set lualine as statusline
-    'nvim-lualine/lualine.nvim',
-    -- See `:help lualine.txt`
-    opts = {
-      options = {
-        icons_enabled = false,
-        theme = 'auto',
-        component_separators = '|',
-        section_separators = '',
+      {
+        -- Highlight, edit, and navigate code
+        'nvim-treesitter/nvim-treesitter',
+        lazy = false,
+        build = ':TSUpdate',
       },
-    },
+
+      -- NOTE: This is where your plugins related to LSP can be installed.
+      --  The configuration is done below. Search for lspconfig to find it below.
+      {
+          -- LSP Configuration & Plugins
+          'neovim/nvim-lspconfig',
+
+          dependencies = {
+            -- Automatically install LSPs to stdpath for neovim
+            { 'mason-org/mason.nvim', config = true },
+            'mason-org/mason-lspconfig.nvim',
+
+          opts = {
+            inlay_hints = { enabled = true },
+          },
+            -- Useful status updates for LSP
+            -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
+            { 'j-hui/fidget.nvim', tag = 'legacy', opts = {}, },
+
+            -- Additional lua configuration, makes nvim stuff amazing!
+            'folke/neodev.nvim',
+          },
+      },
+
+      {
+          -- vim-dichromatic
+          'romainl/vim-dichromatic',
+      },
+
+      {
+          -- Theme inspired by Atom
+          'navarasu/onedark.nvim',
+          priority = 1000,
+          config = function()
+            vim.cmd.colorscheme 'dichromatic'
+          end,
+      },
+
+      {
+          -- Set lualine as statusline
+          'nvim-lualine/lualine.nvim',
+          -- See `:help lualine.txt`
+          opts = {
+            options = {
+                icons_enabled = false,
+                theme = 'auto',
+                component_separators = '|',
+                section_separators = '',
+            },
+          },
+      },
+
+      {
+          -- Add indentation guides even on blank lines
+          'lukas-reineke/indent-blankline.nvim',
+          -- Enable `lukas-reineke/indent-blankline.nvim`
+          -- See `:help indent_blankline.txt`
+          main = "ibl",
+          opts = {},
+      },
+
+      -- "gc" to comment visual regions/lines
+      { 'numToStr/Comment.nvim', opts = {} },
+
+      -- Fuzzy Finder Algorithm which requires local dependencies to be built.
+      -- Only load if `make` is available. Make sure you have the system
+      -- requirements installed.
+      {
+          'nvim-telescope/telescope-fzf-native.nvim',
+          -- NOTE: If you are having trouble with this installation,
+          --       refer to the README for telescope-fzf-native for more instructions.
+          build = 'make',
+          cond = function()
+            return vim.fn.executable 'make' == 1
+          end,
+      },
   },
-
-  {
-    -- Add indentation guides even on blank lines
-    'lukas-reineke/indent-blankline.nvim',
-    -- Enable `lukas-reineke/indent-blankline.nvim`
-    -- See `:help indent_blankline.txt`
-    main = "ibl",
-    opts = {},
-  },
-
-  -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim', opts = {} },
-
-  -- Fuzzy Finder (files, lsp, etc)
-  { 'nvim-telescope/telescope.nvim', branch = '0.1.x', dependencies = { 'nvim-lua/plenary.nvim' } },
-
-  -- Fuzzy Finder Algorithm which requires local dependencies to be built.
-  -- Only load if `make` is available. Make sure you have the system
-  -- requirements installed.
-  {
-    'nvim-telescope/telescope-fzf-native.nvim',
-    -- NOTE: If you are having trouble with this installation,
-    --       refer to the README for telescope-fzf-native for more instructions.
-    build = 'make',
-    cond = function()
-      return vim.fn.executable 'make' == 1
-    end,
-  },
-
-  {
-    -- Highlight, edit, and navigate code
-    'nvim-treesitter/nvim-treesitter',
-    dependencies = {
-      'nvim-treesitter/nvim-treesitter-textobjects',
-    },
-    build = ':TSUpdate',
-  },
-
-  -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
-  --       These are some example plugins that I've included in the kickstart repository.
-  --       Uncomment any of the lines below to enable them.
-  -- require 'kickstart.plugins.autoformat',
-  -- require 'kickstart.plugins.debug',
-
-  -- NOTE: The import below automatically adds your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
-  --    You can use this folder to prevent any conflicts with this init.lua if you're interested in keeping
-  --    up-to-date with whatever is in the kickstart repo.
-  --
-  --    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
-  --
-  --    An additional note is that if you only copied in the `init.lua`, you can just comment this line
-  --    to get rid of the warning telling you that there are not plugins in `lua/custom/plugins/`.
-  -- { import = 'custom.plugins' },
 }, {})
 
 -- [[ Setting options
@@ -309,40 +297,6 @@ vim.api.nvim_create_autocmd({"BufRead","BufNewFile"}, {
   command = "set filetype=dts"
 })
 
--- [[ Configure Telescope
--- See `:help telescope` and `:help telescope.setup()`
-require('telescope').setup {
-  defaults = {
-    mappings = {
-      i = {
-        ['<C-u>'] = false,
-        ['<C-d>'] = false,
-      },
-    },
-  },
-}
-
--- Enable telescope fzf native, if installed
-pcall(require('telescope').load_extension, 'fzf')
-
--- See `:help telescope.builtin`
-vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
-vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
-vim.keymap.set('n', '<leader>/', function()
-  -- You can pass additional configuration to telescope to change theme, layout, etc.
-  require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
-    winblend = 10,
-    previewer = false,
-  })
-end, { desc = '[/] Fuzzily search in current buffer' })
-
-vim.keymap.set('n', '<leader>gf', require('telescope.builtin').git_files, { desc = 'Search [G]it [F]iles' })
-vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
-vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
-vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
-vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
-vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
-
 -- Setup indent-blankline (ibl)
 --require('ibl').setup()
 local highlight = {
@@ -353,72 +307,6 @@ local highlight = {
     "RainbowGreen",
     "RainbowViolet",
     "RainbowCyan",
-}
-
--- [[ Configure Treesitter
--- See `:help nvim-treesitter`
-require('nvim-treesitter.configs').setup {
-  -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'typescript', 'vimdoc', 'vim' },
-
-  -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
-  auto_install = false,
-
-  highlight = { enable = true },
-  indent = { enable = true, disable = { 'python' } },
-  incremental_selection = {
-    enable = true,
-    keymaps = {
-      init_selection = '<c-space>',
-      node_incremental = '<c-space>',
-      scope_incremental = '<c-s>',
-      node_decremental = '<M-space>',
-    },
-  },
-  textobjects = {
-    select = {
-      enable = true,
-      lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
-      keymaps = {
-        -- You can use the capture groups defined in textobjects.scm
-        ['aa'] = '@parameter.outer',
-        ['ia'] = '@parameter.inner',
-        ['af'] = '@function.outer',
-        ['if'] = '@function.inner',
-        ['ac'] = '@class.outer',
-        ['ic'] = '@class.inner',
-      },
-    },
-    move = {
-      enable = true,
-      set_jumps = true, -- whether to set jumps in the jumplist
-      goto_next_start = {
-        [']m'] = '@function.outer',
-        [']]'] = '@class.outer',
-      },
-      goto_next_end = {
-        [']M'] = '@function.outer',
-        [']['] = '@class.outer',
-      },
-      goto_previous_start = {
-        ['[m'] = '@function.outer',
-        ['[['] = '@class.outer',
-      },
-      goto_previous_end = {
-        ['[M'] = '@function.outer',
-        ['[]'] = '@class.outer',
-      },
-    },
-    swap = {
-      enable = true,
-      swap_next = {
-        ['<leader>a'] = '@parameter.inner',
-      },
-      swap_previous = {
-        ['<leader>A'] = '@parameter.inner',
-      },
-    },
-  },
 }
 
 -- Diagnostic keymaps
@@ -492,31 +380,6 @@ local servers = {
   },
 }
 
--- Setup neovim lua configuration
-require('neodev').setup()
-
--- Ensure the servers above are installed
--- local mason_lspconfig = require 'mason-lspconfig'
--- local mason_lspconfig = vim.lsp.config("mason_lspconfig")
---
--- mason_lspconfig.setup {
---   ensure_installed = vim.tbl_keys(servers),
---   vim.lsp.config("lspconfig").setup({
---     on_attach = on_attach,
---   })
--- }
--- vim.lsp.enable('mason_lspconfig')
-
-vim.lsp.config('ruff', {
-  init_options = {
-    settings = {
-      -- Ruff language server settings go here
-    }
-  }
-})
-
-vim.lsp.enable('ruff')
-
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
 
@@ -552,6 +415,9 @@ vim.lsp.config("ruff", {
   }
 })
 vim.lsp.enable("ruff")
+
+-- Required: Enable the language server
+vim.lsp.enable('ty')
 
 -- -- Create a BufWritePre command to run ruff check on *.py file write
 -- vim.api.nvim_create_autocmd("BufWritePre", {
