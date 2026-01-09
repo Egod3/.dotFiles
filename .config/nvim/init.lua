@@ -419,6 +419,14 @@ vim.lsp.enable("ruff")
 -- Required: Enable the language server
 vim.lsp.enable('ty')
 
+-- Enable virtual messages (errors and warnings) to show up from LSP's
+vim.diagnostic.config({
+    virtual_text = true, -- Shows messages as inline text
+    signs = true,        -- Shows icons in the sign column (E for Error, W for Warning)
+    update_in_insert = true, -- Updates diagnostics while in insert mode
+    -- other options like 'underline', 'severity', etc.
+})
+
 -- -- Create a BufWritePre command to run ruff check on *.py file write
 -- vim.api.nvim_create_autocmd("BufWritePre", {
 --   pattern = "*.py",
