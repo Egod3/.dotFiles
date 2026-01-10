@@ -16,9 +16,9 @@ if [ $? != 0 ]
   # 0
   tmux -2 new-session -s $SESSION_NAME -n dotFiles -d -c  ~/.dotFiles
   tmux split-window -h -c                                  ~/.dotFiles
-  # # 1
-  # tmux new-window -n stm32l4hal -c /mnt/NAS/data/git/rust_embd/libs/stm32l4xx-hal/examples
-  # tmux split-window -h -c          /mnt/NAS/data/git/rust_embd/libs/stm32l4xx-hal/examples
+  # 1
+  tmux new-window -n char-sheet -c ~/git/tools/char-sheet
+  tmux split-window -h -c          ~/git/tools/char-sheet
   # # 2
   # tmux new-window -n stm32 -c /mnt/NAS/data/git/rust_embd/apps/stm32-rs
   # tmux split-window -h -c     /mnt/NAS/data/git/rust_embd/apps/stm32-rs
@@ -39,7 +39,7 @@ if [ $? != 0 ]
   # tmux split-window -h -c      /mnt/NAS/data/git/rust_embd/oses/zephyrproject
   # tmux selectp -t 0
   # tmux split-window -v -c      /mnt/NAS/data/git/rust_embd/oses/zephyrproject
-  # 5
+  # 2
   tmux new-window -n video -c /mnt/NAS/video
 
 fi
