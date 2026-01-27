@@ -27,6 +27,16 @@ set_dot_files(){
         mkdir -vp "$NVIM_CONF_DIR"
     fi
 
+    ALACRITTY_CONF_DIR="$HOME/.config/alacritty"
+    if [[ ! -d "$ALACRITTY_CONF_DIR" ]]; then
+        mkdir -vp "$ALACRITTY_CONF_DIR"
+    fi
+
+    PICOM_CONF_DIR="$HOME/.config/picom"
+    if [[ ! -d "$PICOM_CONF_DIR" ]]; then
+        mkdir -vp "$PICOM_CONF_DIR"
+    fi
+
     for i in "${dot_files[@]}"
     do
         # If there is a .bashrc file locally in ~/ then move it to ~/.bashrc.bak
