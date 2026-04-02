@@ -109,7 +109,7 @@ require('lazy').setup({
   -- NOTE: First, some plugins that don't require any configuration
 
   spec = {
-      { import = "plugins" },
+      -- { import = "--plugins" },
 
       -- Rustaceanvim - easy setup of rust-analyzer in neovim!
       'mrcjkb/rustaceanvim',
