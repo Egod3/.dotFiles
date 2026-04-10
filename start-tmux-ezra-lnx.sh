@@ -39,8 +39,10 @@ if [ $? != 0 ]
   tmux selectp -t 0
   tmux split-window -v        -c                            ~/git/tools/char-sheet
   # 5
-  tmux new-window -n mcuboot-rs -c                          ~/git/mcuboot-rs
-  tmux split-window -h -c                                   ~/git/mcuboot-rs
+  tmux new-window -n mote -c                                ~/git/godot/mote
+  tmux split-window -h -c                                   ~/git/godot/mote
+  tmux selectp -t 0
+  tmux split-window -v -c                                   ~/git/godot/mote
   # 6
   tmux new-window -n bash -c                                ~
 
