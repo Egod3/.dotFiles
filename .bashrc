@@ -120,6 +120,11 @@ if [ "$HOSTNAME" = "ezra-lnx" ] && [ "$username" = "ezra" ]; then
     unset ZEPHYR_TOOLCHAIN_VARIANT
     export ZEPHYR_SDK_INSTALL_DIR=$HOME/zephyr-sdk-0.16.8
     export ZEPHYR_BASE=$HOME/zephyrproject/zephyr
+    export MOTE_WINDOWS_NAME="x86_64-win"
+    export MOTE_LINUX_NAME="x86_64-linux"
+    export MOTE_EXPORT_DIR_BASE="$HOME/Downloads/Mote"
+    export MOTE_EXPORT_DIR_WINDOWS="$MOTE_EXPORT_DIR_BASE/$MOTE_WINDOWS_NAME"
+    export MOTE_EXPORT_DIR_LINUX="$MOTE_EXPORT_DIR_BASE/$MOTE_LINUX_NAME"
 elif [ "$HOSTNAME" = "eg-linux" ] && [ "$username" = "eg" ]; then
     # Only source $HOME/work_conf if on my work host.
     # $HOME/.work_conf sources $HOME/.bash_aliases_work, if it exists
