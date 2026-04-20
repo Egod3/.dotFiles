@@ -188,6 +188,12 @@ if [ "$HOSTNAME" = "ezra-lnx" ] && [ "$username" = "ezra" ]; then
   alias prusa-slicer=prusaslicer
   alias godot4='flatpak run org.godotengine.Godot &'
 fi
+if [ "$HOSTNAME" = "egod-XPS" ] && [ "$username" = "egodfrey" ]; then
+  alias prusaslicer='flatpak run com.prusa3d.PrusaSlicer'
+  alias prusa_slicer=prusaslicer
+  alias prusa-slicer=prusaslicer
+  alias godot4='flatpak run org.godotengine.Godot &'
+fi
 alias fts='find /mnt/NAS/video/  -iname *.ts'
 
 alias start_tmux='~/.dotFiles/start-tmux.sh'

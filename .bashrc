@@ -171,7 +171,14 @@ elif [ "$HOSTNAME" = "eg-linux" ] && [ "$username" = "eg" ]; then
 
     # TODO: Is this the right sub-path to point to?
     export QT_STATIC_PATH=/workspace/flm/hedscan/hedscan-docker-qt/output-qt6.6.3-static-jammy/
+elif [ "$HOSTNAME" = "egod-XPS" ] && [ "$username" = "egodfrey" ]; then
+    export MOTE_LINUX_NAME="x86_64-linux"
+    export MOTE_WINDOWS_NAME="x86_64-win"
+    export MOTE_EXPORT_DIR_WINDOWS="$HOME/Downloads/Mote/x86_64-win"
+    export MOTE_EXPORT_DIR_LINUX="$HOME/Downloads/Mote/x86_64-linux"
+    export MOTE_EXPORT_DIR_APPLE="$HOME/Downloads/Mote/x64_x64-apple"
 fi
+
 
 
 # uv
