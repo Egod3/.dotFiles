@@ -21,6 +21,7 @@ pushd /workspace
 
 if [ $ret -eq 1 ]; then
   # 0
+  echo "create new tmux session"
   tmux -2 new -s $SESSION_NAME -n workspace -d -c /workspace
   tmux split-window -h                         -c /workspace
   if [[ "$SESSION_NAME" == "flm" ]]; then
