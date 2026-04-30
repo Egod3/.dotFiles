@@ -50,7 +50,7 @@ if [ $ret -eq 1 ]; then
     tmux new-window -n hs-docker-srv                 -c $HEDSCAN_ROOT/hedscan-docker-server
     tmux split-window -h                             -c $HEDSCAN_ROOT/hedscan-docker-server
     # 7
-    tmux new-window -n hedscan-mliss                 -c $HEDSCAN_ROOT/hedscan-server
+    tmux new-window -n SW-DEV                        -c $HEDSCAN_ROOT/hedscan-server
     tmux split-window -h                             -c $HEDSCAN_ROOT/hedscan-server
     tmux split-window -v                             -c $HEDSCAN_ROOT/hedscan-server
     tmux selectp -t 0
