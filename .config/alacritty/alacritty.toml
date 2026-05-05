@@ -1,3 +1,5 @@
+import = ["~/.config/alacritty/themes/themes/ayu_dark.toml"]
+
 [window]
 padding = { x = 10, y = 10 }
 dynamic_title = true
@@ -20,31 +22,3 @@ blink_interval = 500
 [font.offset]
 x = 0
 y = 1 # Add a small vertical space between lines
-
-[colors.primary]
-background = '#1c1c1c'
-foreground = '#bcbcbc'
-
-[colors.normal]
-black   = '#1c1c1c' # Background-match
-red     = '#af5f5f' # Vermillion/Orange-Red
-green   = '#5faf5f' # Bluish Green
-yellow  = '#d7af5f' # Amber/Yellow
-blue    = '#5f87af' # Sky Blue
-magenta = '#af87af' # Reddish Purple
-cyan    = '#5fafaf' # Teal/Cyan
-white   = '#bcbcbc' # Light Grey
-
-[colors.bright]
-black   = '#444444' # Grey
-red     = '#ff8787' # Lighter Vermillion
-green   = '#87ffaf' # Lighter Bluish Green
-yellow  = '#ffd787' # Lighter Amber
-blue    = '#87afff' # Lighter Blue
-magenta = '#dfafff' # Lighter Purple
-cyan    = '#87ffff' # Lighter Cyan
-white   = '#eeeeee' # Off-white
-
-[colors.cursor]
-text   = '#1c1c1c'
-cursor = '#bcbcbc'
