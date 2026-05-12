@@ -18,7 +18,7 @@
 #       discord
 
 # Global list of config files to symlink
-dot_files=('.bashrc' '.bash_aliases' '.git-prompt.sh' '.config/nvim/init.lua' '.tmux.conf' '.gdbinit' '.config/pycodestyle' '.telnetrc' '.ruff.toml' '.gitconfig' '.config/picom/picom.conf' '.config/alacritty/alacritty.toml')
+dot_files=('.bashrc' '.bash_aliases' '.git-prompt.sh' '.config/nvim/init.lua' '.tmux.conf' '.gdbinit' '.config/pycodestyle' '.telnetrc' '.ruff.toml' '.gitconfig' '.config/picom/picom.conf' '.config/alacritty/alacritty.toml' '.config/zellij/config.kdl')
 
 set_dot_files(){
     # Check if the nvim config path exists if it does not create it
@@ -35,6 +35,11 @@ set_dot_files(){
     PICOM_CONF_DIR="$HOME/.config/picom"
     if [[ ! -d "$PICOM_CONF_DIR" ]]; then
         mkdir -vp "$PICOM_CONF_DIR"
+    fi
+
+    ZELLIJ_CONF_DIR="$HOME/.config/zellij"
+    if [[ ! -d "$ZELLIJ_CONF_DIR" ]]; then
+        mkdir -vp "$ZELLIJ_CONF_DIR"
     fi
 
     for i in "${dot_files[@]}"
