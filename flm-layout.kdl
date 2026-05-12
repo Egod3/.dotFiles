@@ -1,0 +1,183 @@
+// Zellij layout for the "flm" session.
+// Equivalent of start-tmux-eg-linux.sh.
+//
+// Notes on Zellij vs tmux split terminology:
+//   tmux split-window -h  (side-by-side)   == Zellij split_direction "vertical"
+//   tmux split-window -v  (stacked)        == Zellij split_direction "horizontal"
+//
+// The cwd on each tab is inherited by every pane in that tab unless the
+// pane specifies its own cwd.
+
+layout {
+
+    default_tab_template {
+    pane size=1 borderless=true {
+        plugin location="zellij:tab-bar"
+    }
+    children
+    pane size=2 borderless=true {
+        plugin location="zellij:status-bar"
+    }
+}
+    // A pane that drops into bash with the Python venv activated.
+    // The activation happens before the interactive shell starts, so it
+    // does not pollute your shell history (unlike tmux send-keys).
+    pane_template name="venv_pane" {
+        command "bash"
+        args "-c" "source ~/.venv-uv/bin/activate && exec bash"
+    }
+
+    // 0 - workspace: two panes side by side in /workspace
+    tab name="workspace" cwd="/workspace" {
+        pane split_direction="vertical" {
+            pane
+            pane
+        }
+    }
+
+    // 1 - hs-utils: top-left, bottom-left, right -- all venv-activated
+    tab name="hs-utils" cwd="/workspace/flm/hedscan/hedscan-utils" {
+        pane split_direction="vertical" {
+            pane split_direction="horizontal" {
+                venv_pane
+                venv_pane
+            }
+            venv_pane
+        }
+    }
+
+    // 2 - hs-server: bottom-left switches to hedscan-docker-server
+    tab name="hs-server" cwd="/workspace/flm/hedscan/hedscan-server" {
+        pane split_direction="vertical" {
+            pane split_direction="horizontal" {
+                pane
+                pane cwd="/workspace/flm/hedscan/hedscan-docker-server"
+            }
+            pane
+        }
+    }
+
+    // 3 - hs-python: 3 panes, all venv
+    tab name="hs-python" cwd="/workspace/flm/hedscan/hedscan-python" {
+        pane split_direction="vertical" {
+            pane split_direction="horizontal" {
+                venv_pane
+                venv_pane
+            }
+            venv_pane
+        }
+    }
+
+    // 4 - hs-db: 3 panes, all venv
+    tab name="hs-db" cwd="/workspace/flm/hedscan/hedscan-db" {
+        pane split_direction="vertical" {
+            pane split_direction="horizontal" {
+                venv_pane
+                venv_pane
+            }
+            venv_pane
+        }
+    }
+
+    // 5 - hs-web: 3 panes, all venv
+    tab name="hs-web" cwd="/workspace/flm/hedscan/hedscan-web" {
+        pane split_direction="vertical" {
+            pane split_direction="horizontal" {
+                venv_pane
+                venv_pane
+            }
+            venv_pane
+        }
+    }
+
+    // 6 - hs-sensor-tune: 3 panes, all venv
+    tab name="hs-sensor-tune" cwd="/workspace/flm/hedscan/hedscan-sensor-tune" {
+        pane split_direction="vertical" {
+            pane split_direction="horizontal" {
+                venv_pane
+                venv_pane
+            }
+            venv_pane
+        }
+    }
+
+    // 7 - hs-core: 3 panes, no venv
+    tab name="hs-core" cwd="/workspace/flm/hedscan/hedscan-core" {
+        pane split_direction="vertical" {
+            pane split_direction="horizontal" {
+                pane
+                pane
+            }
+            pane
+        }
+    }
+
+    // 8 - hs-api: 3 panes, no venv
+    tab name="hs-api" cwd="/workspace/flm/hedscan/hedscan-api" {
+        pane split_direction="vertical" {
+            pane split_direction="horizontal" {
+                pane
+                pane
+            }
+            pane
+        }
+    }
+
+    // 9 - hs-yocto: 4 panes (2x2), with two distinct cwds
+    //   top-left:  hedscan-yocto-build           | top-right: hedscan-yocto-build
+    //   bot-left:  hedscan-docker-yocto          | bot-right: hedscan-yocto-build/layers/meta-hedscan
+    tab name="hs-yocto" cwd="/workspace/flm/hedscan/hedscan-yocto-build" {
+        pane split_direction="vertical" {
+            pane split_direction="horizontal" {
+                pane
+                pane cwd="/workspace/flm/hedscan/hedscan-docker-yocto"
+            }
+            pane split_direction="horizontal" {
+                pane
+                pane cwd="/workspace/flm/hedscan/hedscan-yocto-build/layers/meta-hedscan"
+            }
+        }
+    }
+
+    // 10 - sw-dev: 4 panes (2x2), all in hedscan-server
+    tab name="sw-dev" cwd="/workspace/flm/hedscan/hedscan-server" {
+        pane split_direction="vertical" {
+            pane split_direction="horizontal" {
+                pane
+                pane
+            }
+            pane split_direction="horizontal" {
+                pane
+                pane
+            }
+        }
+    }
+
+    // 11 - hs-fw-bin: 2 panes side by side, both venv
+    tab name="hs-fw-bin" cwd="/workspace/flm/hedscan/hedscan-firmware-bin" {
+        pane split_direction="vertical" {
+            venv_pane
+            venv_pane
+        }
+    }
+
+    // 12 - fl-server: 2 panes side by side at the hedscan root
+    tab name="fl-server" cwd="/workspace/flm/hedscan" {
+        pane split_direction="vertical" {
+            pane
+            pane
+        }
+    }
+
+    // ---- The following block was commented out in the tmux script ----
+    // tab name="ptc" cwd="/workspace/hedscan/ptc-firmware" {
+    //     pane split_direction="vertical" {
+    //         pane split_direction="horizontal" {
+    //             pane
+    //             pane
+    //         }
+    //         pane
+    //     }
+    // }
+    // Reminder: in each ptc pane, run `setup_west_ptc`.
+}
