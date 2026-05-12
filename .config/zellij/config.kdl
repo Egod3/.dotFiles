@@ -212,6 +212,7 @@ keybinds clear-defaults=true {
         bind "z" { ToggleFocusFullscreen; SwitchToMode "normal"; }
         bind "d" { Detach; }
         bind "x" { CloseFocus; SwitchToMode "Normal"; }
+        bind "," { SwitchToMode "renametab"; TabNameInput 0; }
 
         // Esc cancels back to Normal without doing anything.
         bind "Esc" { SwitchToMode "Normal"; }
