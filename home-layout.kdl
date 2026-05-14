@@ -1,5 +1,5 @@
-// Zellij layout for the "egod-XPS" session.
-// Equivalent of start-tmux-eg-linux.sh.
+// Zellij layout for the "home" session.
+// Equivalent of start-tmux-ezra-lnx.sh.
 //
 // Notes on Zellij vs tmux split terminology:
 //   tmux split-window -h  (side-by-side)   == Zellij split_direction "vertical"
