@@ -22,7 +22,7 @@ layout {
     // A pane that drops into bash with the Python venv activated.
     // The activation happens before the interactive shell starts, so it
     // does not pollute your shell history (unlike tmux send-keys).
-    pane_template name="venv_pane" {
+    pane_template name="venv_pane" close_on_exit=true {
         command "bash"
         args "-c" "source ~/.venv-uv/bin/activate && exec bash"
     }

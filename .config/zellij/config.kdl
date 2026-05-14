@@ -222,3 +222,6 @@ keybinds clear-defaults=true {
         bind "Ctrl a" { Write 1; SwitchToMode "Normal"; }
     }
 }
+options {
+    pane_close_on_exit true
+}
