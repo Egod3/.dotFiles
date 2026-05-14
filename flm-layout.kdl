@@ -168,16 +168,4 @@ layout {
             pane
         }
     }
-
-    // ---- The following block was commented out in the tmux script ----
-    // tab name="ptc" cwd="/workspace/hedscan/ptc-firmware" {
-    //     pane split_direction="vertical" {
-    //         pane split_direction="horizontal" {
-    //             pane
-    //             pane
-    //         }
-    //         pane
-    //     }
-    // }
-    // Reminder: in each ptc pane, run `setup_west_ptc`.
 }

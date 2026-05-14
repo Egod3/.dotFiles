@@ -1,14 +1,10 @@
 #!/bin/bash
 #
-# start-zellij-flm.sh
-# Zellij equivalent of start-tmux-eg-linux.sh.
-# Tested on Xubuntu 24.04 / Pop!_OS 22.04 with zellij installed via:
-#   - cargo install zellij, OR
-#   - the official tarball from https://github.com/zellij-org/zellij/releases
-#
+# start-zellij.sh
 # Behavior:
 #   - If a zellij session named $SESSION_NAME exists, attach to it.
-#   - Otherwise, if $SESSION_NAME == "flm", create it from flm-layout.kdl.
+#   - If $SESSION_NAME == "flm", create it from flm-layout.kdl.
+#   - If $SESSION_NAME == "home", create it from home-layout.kdl.
 #   - Any other unknown session name exits without doing anything (matches
 #     the original tmux script's behavior).
 
@@ -24,7 +20,8 @@ fi
 # Locate the layout file next to this script (regardless of where it is
 # invoked from).
 SCRIPT_DIR="$(cd "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")" && pwd)"
-LAYOUT_FILE="$SCRIPT_DIR/flm-layout.kdl"
+FLM_LAYOUT_FILE="$SCRIPT_DIR/flm-layout.kdl"
+HOME_LAYOUT_FILE="$SCRIPT_DIR/home-layout.kdl"
 
 # Check whether a zellij session with this exact name already exists.
 # zellij list-sessions emits ANSI color codes and lines like:
@@ -47,19 +44,25 @@ if ! command -v zellij >/dev/null 2>&1; then
     exit 127
 fi
 
-# if session_exists "$SESSION_NAME"; then
-#     echo "Attaching to existing session: $SESSION_NAME"
-#     exec zellij attach "$SESSION_NAME"
-# fi
+if session_exists "$SESSION_NAME"; then
+    echo "Attaching to existing session: $SESSION_NAME"
+    exec zellij attach "$SESSION_NAME"
+fi
 
 echo "No existing session named '$SESSION_NAME'. Creating a new one."
 
 if [[ "$SESSION_NAME" == "flm" ]]; then
-    if [[ ! -f "$LAYOUT_FILE" ]]; then
-        echo "Layout file not found: $LAYOUT_FILE" >&2
+    if [[ ! -f "$FLM_LAYOUT_FILE" ]]; then
+        echo "Layout file not found: $FLM_LAYOUT_FILE" >&2
         exit 1
     fi
-    exec zellij -n "$LAYOUT_FILE" --session "$SESSION_NAME"
+    exec zellij -n "$FLM_LAYOUT_FILE" --session "$SESSION_NAME"
+elif [[ "$SESSION_NAME" == "home" ]]; then
+    if [[ ! -f "$HOME_LAYOUT_FILE" ]]; then
+        echo "Layout file not found: $HOME_LAYOUT_FILE" >&2
+        exit 1
+    fi
+    exec zellij -n "$HOME_LAYOUT_FILE" --session "$SESSION_NAME"
 else
     echo "unknown session name ($SESSION_NAME), nothing to do"
     exit 0

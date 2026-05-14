@@ -1,0 +1,56 @@
+// Zellij layout for the "egod-XPS" session.
+// Equivalent of start-tmux-eg-linux.sh.
+//
+// Notes on Zellij vs tmux split terminology:
+//   tmux split-window -h  (side-by-side)   == Zellij split_direction "vertical"
+//   tmux split-window -v  (stacked)        == Zellij split_direction "horizontal"
+//
+// The cwd on each tab is inherited by every pane in that tab unless the
+// pane specifies its own cwd.
+
+layout {
+
+    default_tab_template {
+    pane size=1 borderless=true {
+        plugin location="zellij:tab-bar"
+    }
+    children
+    pane size=2 borderless=true {
+        plugin location="zellij:status-bar"
+    }
+    }
+    // A pane that drops into bash with the Python venv activated.
+    // The activation happens before the interactive shell starts, so it
+    // does not pollute your shell history (unlike tmux send-keys).
+    pane_template name="venv_pane" {
+        command "bash"
+        args "-c" "source ~/.venv-uv/bin/activate && exec bash"
+    }
+
+    tab name="dotFiles" cwd="~/.dotFiles" {
+        pane split_direction="vertical" {
+            pane
+            pane
+        }
+    }
+
+    tab name="char-sheet" cwd="~/git/char-sheet" {
+        pane split_direction="vertical" {
+            pane split_direction="horizontal" {
+                pane
+                pane
+            }
+            pane
+        }
+    }
+
+    tab name="mote" cwd="~/git/godot/mote-godot" {
+        pane split_direction="vertical" {
+            pane split_direction="horizontal" {
+                pane
+                pane
+            }
+            pane
+        }
+    }
+}
