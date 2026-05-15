@@ -27,8 +27,8 @@ layout {
         args "-c" "source ~/.venv-uv/bin/activate && exec bash"
     }
 
-    // 0 - workspace: two panes side by side in /workspace
-    tab name="workspace" cwd="/workspace" {
+    // 0 - dotFiles: two panes side by side in ~/.dotFiles
+    tab name="dotFiles" cwd="~/.dotFiles" {
         pane split_direction="vertical" {
             pane
             pane
