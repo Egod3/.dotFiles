@@ -184,3 +184,4 @@ fi
 
 # uv
 export PATH="/home/ezra/.local/bin:$PATH"
+. "$HOME/.cargo/env"

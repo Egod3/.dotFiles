@@ -9,9 +9,9 @@
 #       ripgrep cargo-generate cargo-zigbuild uv ruff
 #       probe-rs --features cli
 #   snap install:
-#       chromium htop nmap signal-desktop steam vlc
+#       chromium htop nmap signal-desktop steam vlc godot-4
 #   snap install with --classic:
-#       blender nvim tio astral-uv rustup  zellij
+#       blender nvim tio astral-uv zellij
 #   flatpak
 #       prusa-slicer
 #   Ubuntu App Store
