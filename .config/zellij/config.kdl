@@ -235,6 +235,6 @@ keybinds clear-defaults=true {
         bind "-" { NewPane "Down";  SwitchToMode "Normal"; }
     }
 }
-options {
-    pane_close_on_exit true
-}
+close_on_exit true
+// theme "retro-wave"
+theme "lucario"
