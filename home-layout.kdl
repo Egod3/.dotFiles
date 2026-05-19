@@ -34,7 +34,7 @@ layout {
         }
     }
 
-    tab name="char-sheet" cwd="~/git/char-sheet" {
+    tab name="char-sheet" cwd="~/git/tools/char-sheet" {
         pane split_direction="vertical" {
             pane split_direction="horizontal" {
                 pane
