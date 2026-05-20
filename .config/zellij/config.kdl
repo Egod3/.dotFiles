@@ -238,3 +238,5 @@ keybinds clear-defaults=true {
 close_on_exit true
 // theme "retro-wave"
 theme "lucario"
+// Disable the lines around zellij for multi-line copies
+//pane_frames false
