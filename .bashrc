@@ -178,6 +178,13 @@ elif [ "$HOSTNAME" = "egod-XPS" ] && [ "$username" = "egodfrey" ]; then
     export MOTE_EXPORT_DIR_WINDOWS="$MOTE_EXPORT_DIR_BASE/x86_64-win"
     export MOTE_EXPORT_DIR_LINUX="$MOTE_EXPORT_DIR_BASE/x86_64-linux"
     export MOTE_EXPORT_DIR_APPLE="$MOTE_EXPORT_DIR_BASE/x64_x64-apple"
+elif [ "$HOSTNAME" = "pop-os" ] && [ "$username" = "ezra" ]; then
+    export MOTE_LINUX_NAME="x86_64-linux"
+    export MOTE_WINDOWS_NAME="x86_64-win"
+    export MOTE_EXPORT_DIR_BASE="$HOME/Downloads/Mote"
+    export MOTE_EXPORT_DIR_WINDOWS="$MOTE_EXPORT_DIR_BASE/x86_64-win"
+    export MOTE_EXPORT_DIR_LINUX="$MOTE_EXPORT_DIR_BASE/x86_64-linux"
+    export MOTE_EXPORT_DIR_APPLE="$MOTE_EXPORT_DIR_BASE/x64_x64-apple"
 fi
 
 
