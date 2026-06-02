@@ -25,4 +25,4 @@ x = 0
 y = 1 # Add a small vertical space between lines
 
 [env]
-term = "xterm-256color"
+TERM = "xterm-256color"
