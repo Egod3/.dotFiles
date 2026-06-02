@@ -174,7 +174,7 @@ alias glo='git log --decorate --graph --oneline'
 alias gb='git branch -vv'
 alias gba='git branch -vva'
 alias gd='git diff'
-alias f='fd -i '
+alias f='fdfind -i '
 alias g='rg -i '
 alias gg='git grep '
 
