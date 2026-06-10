@@ -53,4 +53,10 @@ layout {
             pane
         }
     }
+
+    tab name="tops" cwd="~/.dotFiles" {
+        pane split_direction="vertical" {
+            pane
+        }
+    }
 }
