@@ -112,18 +112,7 @@ layout {
         }
     }
 
-    // 8 - hs-api: 3 panes, no venv
-    tab name="hs-api" cwd="/workspace/flm/hedscan/hedscan-api" {
-        pane split_direction="vertical" {
-            pane split_direction="horizontal" {
-                pane
-                pane
-            }
-            pane
-        }
-    }
-
-    // 9 - hs-yocto: 4 panes (2x2), with two distinct cwds
+    // 8 - hs-yocto: 4 panes (2x2), with two distinct cwds
     //   top-left:  hedscan-yocto-build           | top-right: hedscan-yocto-build
     //   bot-left:  hedscan-docker-yocto          | bot-right: hedscan-yocto-build/layers/meta-hedscan
     tab name="hs-yocto" cwd="/workspace/flm/hedscan/hedscan-yocto-build" {
@@ -139,7 +128,7 @@ layout {
         }
     }
 
-    // 10 - sw-dev: 4 panes (2x2), all in hedscan-server
+    // 9 - sw-dev: 4 panes (2x2), all in hedscan-server
     tab name="sw-dev" cwd="/workspace/flm/hedscan/hedscan-server" {
         pane split_direction="vertical" {
             pane split_direction="horizontal" {
@@ -153,7 +142,7 @@ layout {
         }
     }
 
-    // 11 - hs-fw-bin: 2 panes side by side, both venv
+    // 10 - hs-fw-bin: 2 panes side by side, both venv
     tab name="hs-fw-bin" cwd="/workspace/flm/hedscan/hedscan-firmware-bin" {
         pane split_direction="vertical" {
             venv_pane
@@ -161,7 +150,7 @@ layout {
         }
     }
 
-    // 12 - fl-server: 2 panes side by side at the hedscan root
+    // 11 - fl-server: 2 panes side by side at the hedscan root
     tab name="fl-server" cwd="/workspace/flm/hedscan" {
         pane split_direction="vertical" {
             pane
