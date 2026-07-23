@@ -106,6 +106,7 @@ deb_update(){
     echo "cargo install-update -a"
     echo "flatpak update -y"
     echo "uv self update"
+    echo "sudo pop-upgrade release upgrade"
     echo "sudo apt update"
     echo "sudo apt upgrade -y"
     echo "sudo apt autoremove -y"
@@ -118,6 +119,7 @@ deb_update(){
     cargo install-update -a
     flatpak update -y
     uv self update
+    sudo pop-upgrade release upgrade
     sudo apt update
     sudo apt upgrade -y
     sudo apt autoremove -y
