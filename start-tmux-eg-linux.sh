@@ -75,35 +75,30 @@ if [ $ret -eq 1 ]; then
     tmux split-window -h                       -c $HEDSCAN_ROOT/hedscan-core
     tmux selectp -t 0
     tmux split-window -v                       -c $HEDSCAN_ROOT/hedscan-core
-    # 8 - hedscan-api
-    tmux new-window -n hs-api                  -c $HEDSCAN_ROOT/hedscan-api
-    tmux split-window -h                       -c $HEDSCAN_ROOT/hedscan-api
-    tmux selectp -t 0
-    tmux split-window -v                       -c $HEDSCAN_ROOT/hedscan-api
     # ### Remember to run this command in the below windows - $ setup_west_ptc ###
-    # 9
+    # 8
     tmux new-window -n ptc                     -c $HEDSCAN_ROOT/ptc-workspace/ptc-firmware
     tmux split-window -h                       -c $HEDSCAN_ROOT/ptc-workspace/ptc-firmware
     tmux selectp -t 0
     tmux split-window -v                       -c $HEDSCAN_ROOT/ptc-workspace/ptc-firmware
-    # 10
+    # 9
     tmux new-window -n hs-yocto                -c $HEDSCAN_ROOT/hedscan-yocto-build
     tmux split-window -h                       -c $HEDSCAN_ROOT/hedscan-yocto-build
     tmux split-window -v                       -c $HEDSCAN_ROOT/hedscan-yocto-build/layers/meta-hedscan
     tmux selectp -t 0
     tmux split-window -v                       -c $HEDSCAN_ROOT/hedscan-docker-yocto
-    # 11
+    # 10
     tmux new-window -n  sw-dev                 -c $HEDSCAN_ROOT/hedscan-server
     tmux split-window -h                       -c $HEDSCAN_ROOT/hedscan-server
     tmux split-window -v                       -c $HEDSCAN_ROOT/hedscan-server
     tmux selectp -t 0
     tmux split-window -v                       -c $HEDSCAN_ROOT/hedscan-server
-    # 12
+    # 11
     tmux new-window -n hs-fw-bin               -c $HEDSCAN_ROOT/hedscan-firmware-bin
     tmux split-window -h                       -c $HEDSCAN_ROOT/hedscan-firmware-bin
     tmux send-keys -t flm:11.0 "source $PYTHON_VENV_PATH" C-m
     tmux send-keys -t flm:11.1 "source $PYTHON_VENV_PATH" C-m
-    # 13
+    # 12
     tmux new-window -n fl-server               -c $HEDSCAN_ROOT
     tmux split-window -h                       -c $HEDSCAN_ROOT
   else
