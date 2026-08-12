@@ -37,7 +37,7 @@ if [ $ret -eq 1 ]; then
     tmux new-window -n hs-server               -c $HEDSCAN_ROOT/hedscan-server
     tmux split-window -h                       -c $HEDSCAN_ROOT/hedscan-server
     tmux selectp -t 0
-    tmux split-window -v                       -c $HEDSCAN_ROOT/hedscan-docker-server
+    tmux split-window -v                       -c $HEDSCAN_ROOT/hedscan-docker-yocto
     # 3
     tmux new-window -n hs-python               -c $HEDSCAN_ROOT/hedscan-python
     tmux split-window -h                       -c $HEDSCAN_ROOT/hedscan-python
