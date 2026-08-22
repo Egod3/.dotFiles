@@ -184,19 +184,19 @@ alias gg='git grep '
 
 username=$(whoami)
 # Only add these aliases if on my personal host
-if [ "$HOSTNAME" = "ezra-lnx" ] && [ "$username" = "ezra" ]; then
+if [ "$HOSTNAME" = "pop-os" ] && [ "$username" = "ezra" ]; then
   alias setup_west="source ~/zephyrproject/.venv/bin/activate"
   alias setup_zephyr=setup_west
   alias prusaslicer='flatpak run com.prusa3d.PrusaSlicer'
   alias prusa_slicer=prusaslicer
   alias prusa-slicer=prusaslicer
-  alias godot4='flatpak run org.godotengine.Godot &'
+  alias godot4='/usr/local/sbin/Godot_v4.7.2-stable_linux.x86_64 &'
 fi
 if [ "$HOSTNAME" = "egod-XPS" ] && [ "$username" = "egodfrey" ]; then
   alias prusaslicer='flatpak run com.prusa3d.PrusaSlicer'
   alias prusa_slicer=prusaslicer
   alias prusa-slicer=prusaslicer
-  alias godot4='flatpak run org.godotengine.Godot &'
+  alias godot4='/usr/local/sbin/Godot_v4.7.2-stable_linux.x86_64 &'
 fi
 alias fts='find /mnt/NAS/video/  -iname *.ts'
 
