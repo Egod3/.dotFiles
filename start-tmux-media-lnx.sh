@@ -25,4 +25,4 @@ if [ $? != 0 ]
   tmux split-window -v -c                                   ~
 fi
 
-tmux attach -t $SESSION_NAME
+exec tmux attach -t $SESSION_NAME

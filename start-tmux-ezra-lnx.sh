@@ -48,4 +48,4 @@ if [ $? != 0 ]
 
 fi
 
-tmux attach -t $SESSION_NAME
+exec tmux attach -t $SESSION_NAME

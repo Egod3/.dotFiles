@@ -70,17 +70,23 @@ if [ $ret -eq 1 ]; then
     tmux send-keys -t flm:6.0 "source $PYTHON_VENV_PATH" C-m
     tmux send-keys -t flm:6.1 "source $PYTHON_VENV_PATH" C-m
     tmux send-keys -t flm:6.2 "source $PYTHON_VENV_PATH" C-m
-    # 7 - hedscan-core
-    tmux new-window -n hs-core                 -c $HEDSCAN_ROOT/hedscan-core
-    tmux split-window -h                       -c $HEDSCAN_ROOT/hedscan-core
+    # 7 - hedscan-system-test
+    tmux new-window -n hs-system-test          -c $HEDSCAN_ROOT/hedscan-system-test
+    tmux split-window -h                       -c $HEDSCAN_ROOT/hedscan-system-test
     tmux selectp -t 0
-    tmux split-window -v                       -c $HEDSCAN_ROOT/hedscan-core
+    tmux split-window -v                       -c $HEDSCAN_ROOT/hedscan-system-test
+    tmux send-keys -t flm:7.0 "source $PYTHON_VENV_PATH" C-m
+    tmux send-keys -t flm:7.1 "source $PYTHON_VENV_PATH" C-m
+    tmux send-keys -t flm:7.2 "source $PYTHON_VENV_PATH" C-m
     # ### Remember to run this command in the below windows - $ setup_west_ptc ###
     # 8
     tmux new-window -n ptc                     -c $HEDSCAN_ROOT/ptc-workspace/ptc-firmware
     tmux split-window -h                       -c $HEDSCAN_ROOT/ptc-workspace/ptc-firmware
     tmux selectp -t 0
     tmux split-window -v                       -c $HEDSCAN_ROOT/ptc-workspace/ptc-firmware
+    tmux send-keys -t flm:8.0 "source $HEDSCAN_ROOT/ptc-workspace/.venv-ptc/bin/activate" C-m
+    tmux send-keys -t flm:8.1 "source $HEDSCAN_ROOT/ptc-workspace/.venv-ptc/bin/activate" C-m
+    tmux send-keys -t flm:8.2 "source $HEDSCAN_ROOT/ptc-workspace/.venv-ptc/bin/activate" C-m
     # 9
     tmux new-window -n hs-yocto                -c $HEDSCAN_ROOT/hedscan-yocto-build
     tmux split-window -h                       -c $HEDSCAN_ROOT/hedscan-yocto-build
@@ -108,7 +114,4 @@ if [ $ret -eq 1 ]; then
   fi
 fi
 
-tmux attach -t $SESSION_NAME
-
-popd
-exit 0
+exec tmux attach -t $SESSION_NAME

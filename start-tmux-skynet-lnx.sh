@@ -108,6 +108,4 @@ if [ $ret -eq 1 ]; then
   fi
 fi
 
-tmux attach -t $SESSION_NAME
-
-exit 0
+exec tmux attach -t $SESSION_NAME

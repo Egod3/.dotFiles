@@ -72,7 +72,4 @@ if [ $ret -eq 1 ]; then
   fi
 fi
 
-tmux attach -t $SESSION_NAME
-
-popd
-exit 0
+exec tmux attach -t $SESSION_NAME
