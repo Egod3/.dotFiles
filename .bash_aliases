@@ -99,14 +99,44 @@ ps_n(){
     ps -t pts/$1 -o pid,ppid,tty,stat,args,wchan
 }
 
-deb_update(){
+pop_os_update(){
     echo
+    echo "running pop_os_update"
     echo "sudo snap refresh"
     echo "rustup update"
     echo "cargo install-update -a"
     echo "flatpak update -y"
     echo "uv self update"
     echo "sudo pop-upgrade release upgrade"
+    echo "sudo apt update"
+    echo "sudo apt upgrade -y"
+    echo "sudo apt autoremove -y"
+    echo "sudo apt autoclean -y"
+    # echo "sudo system76-firmware-cli schedule"
+    echo
+    sudo snap refresh
+    rustup update
+    cargo install-update -a
+    flatpak update -y
+    uv self update
+    sudo pop-upgrade release upgrade
+    sudo apt update
+    sudo apt upgrade -y
+    sudo apt autoremove -y
+    sudo apt autoclean -y
+    # This re-installs the FW each time.. so just run it occasionally to get updates
+    # sudo system76-firmware-cli schedule
+}
+
+# Need to run this on my Dell since their FW is updated via fwupdmgr
+deb_update(){
+    echo
+    echo "running deb_update"
+    echo "sudo snap refresh"
+    echo "rustup update"
+    echo "cargo install-update -a"
+    echo "flatpak update -y"
+    echo "uv self update"
     echo "sudo apt update"
     echo "sudo apt upgrade -y"
     echo "sudo apt autoremove -y"
@@ -120,7 +150,6 @@ deb_update(){
     cargo install-update -a
     flatpak update -y
     uv self update
-    sudo pop-upgrade release upgrade
     sudo apt update
     sudo apt upgrade -y
     sudo apt autoremove -y
@@ -161,7 +190,12 @@ libhedscan_core_export_lib()
 ###############################################
 ####                ALIASES                ####
 ###############################################
-alias update='deb_update'
+source /etc/lsb-release
+if [ "$HOSTNAME" = "pop-os" ] && [ "$username" = "ezra" ]; then
+  alias update='pop_os_update'
+else; then
+  alias update='deb_update'
+fi
 alias color_test='color_test'
 
 alias bash_update='source ~/.bashrc'
@@ -201,6 +235,7 @@ fi
 alias fts='find /mnt/NAS/video/  -iname *.ts'
 
 alias start_tmux='~/.dotFiles/start-tmux.sh'
+alias start_Tmux=start_tmux
 alias vim='/usr/bin/nvim'
 alias pgrep='pgrep -l'
 alias grep='rg '
