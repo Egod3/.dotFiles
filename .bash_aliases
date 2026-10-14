@@ -193,7 +193,7 @@ libhedscan_core_export_lib()
 source /etc/lsb-release
 if [ "$HOSTNAME" = "pop-os" ] && [ "$username" = "ezra" ]; then
   alias update='pop_os_update'
-else; then
+else
   alias update='deb_update'
 fi
 alias color_test='color_test'
